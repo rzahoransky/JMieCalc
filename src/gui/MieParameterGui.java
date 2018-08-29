@@ -100,6 +100,10 @@ public class MieParameterGui extends JPanel implements CalculationAssignmentList
 		}
 		
 	}
+	
+	public void setEditable(boolean editable) {
+		textFields.setEditable(editable);
+	}
 
 	@Override
 	public void wavelengthsChanged() {

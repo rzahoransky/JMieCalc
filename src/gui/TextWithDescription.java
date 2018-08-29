@@ -94,5 +94,11 @@ public class TextWithDescription extends JPanel{
 	public double getValueAsDouble(String description) {
 		return Double.parseDouble(getValue(description));
 	}
+	
+	public void setEditable(boolean editable) {
+		for (TextField field: textFields.values()) {
+			field.setEditable(editable);
+		}
+	}
 
 }
