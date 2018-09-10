@@ -28,25 +28,25 @@ public class MieInfoWriter {
 	
 	public void writeInfoFile(File file) throws IOException {
 		FileWriter fw = new FileWriter(file);
-		fw.write(getInfoString());
+		fw.write(getInfoString(wl1, wl2, wl3));
 		fw.close();
 	}
 	
-	public String getInfoString() {
+	public static String getInfoString(MieList wl1, MieList wl2, MieList wl3) {
 		formatter.setMaximumFractionDigits(8);
 		StringBuilder sb = new StringBuilder();
-		ArrayList<String> wls = getWavelengths();
-		ArrayList<String> sigmas = getSigmas();
-		ArrayList<String> refMedium = getRefIndexMedium();
+		ArrayList<String> wls = getWavelengths(wl1, wl2, wl3);
+		ArrayList<String> sigmas = getSigmas(wl1);
+		ArrayList<String> refMedium = getRefIndexMedium(wl1);
 		
 		for (int i = 0; i<sigmas.size();i++) { 
 			sb.append(getEntryOrZero(wls, i));
 			sb.append("\t");
 			sb.append(getEntryOrZero(refMedium, i));
 			sb.append("\t");
-			sb.append(getEntryOrZero(getRefIndexSphereReal(), i));
+			sb.append(getEntryOrZero(getRefIndexSphereReal(wl1), i));
 			sb.append("\t");
-			sb.append(getEntryOrZero(getRefIndexSphereImag(), i));
+			sb.append(getEntryOrZero(getRefIndexSphereImag(wl1), i));
 			sb.append("\t");
 			sb.append(getEntryOrZero(sigmas, i));
 			sb.append(System.lineSeparator());
@@ -54,7 +54,11 @@ public class MieInfoWriter {
 		return sb.toString();
 	}
 	
-	protected String getEntryOrZero(ArrayList<String> list, int index) {
+	public String getInforString() {
+		return getInfoString(wl1, wl2, wl3);
+	}
+	
+	protected static String getEntryOrZero(ArrayList<String> list, int index) {
 		try {
 			return list.get(index);
 		} catch (Exception e) {
@@ -62,14 +66,14 @@ public class MieInfoWriter {
 		}
 	}
 	
-	protected ArrayList<String> getSigmas() {
+	public static ArrayList<String> getSigmas(MieList wl1) {
 		ArrayList<String> sigmas = new ArrayList<>();
 		for(Double sigma: wl1.get(0).getIntegratedQext().keySet())
 			sigmas.add(formatter.format(sigma));
 		return sigmas;
 	}
 	
-	protected ArrayList<String> getWavelengths() {
+	public static ArrayList<String> getWavelengths(MieList wl1, MieList wl2, MieList wl3) {
 		ArrayList<String> wavelengths = new ArrayList<>();
 		wavelengths.add(formatter.format(wl1.get(0).getWavelength()));
 		wavelengths.add(formatter.format(wl2.get(0).getWavelength()));
@@ -77,19 +81,19 @@ public class MieInfoWriter {
 		return wavelengths;
 	}
 	
-	protected ArrayList<String> getRefIndexMedium() {
+	public static ArrayList<String> getRefIndexMedium(MieList wl1) {
 		ArrayList<String> medium = new ArrayList<>();
 		medium.add(formatter.format(wl1.get(0).getRefractiveIndexMedium()));
 		return medium;
 	}
 	
-	protected ArrayList<String> getRefIndexSphereReal() {
+	protected static ArrayList<String> getRefIndexSphereReal(MieList wl1) {
 		ArrayList<String> sphereReal = new ArrayList<>();
 		sphereReal.add(formatter.format(wl1.get(0).getRefractiveIndexSphereReal()));
 		return sphereReal;
 	}
 	
-	protected ArrayList<String> getRefIndexSphereImag() {
+	protected static ArrayList<String> getRefIndexSphereImag(MieList wl1) {
 		ArrayList<String> sphereImag = new ArrayList<>();
 		sphereImag.add(formatter.format(wl1.get(0).getRefractiveIndexSpereImaginary()));
 		return sphereImag;

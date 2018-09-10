@@ -43,8 +43,8 @@ public class ReadMieList {
 				double qext = scan.nextDouble();
 				MieWrapper mieElement = new MieWrapper();
 				mieElement.setRadiusWavelength(diameter / 2, wavelength);
-				mieElement.setHostRefractiveIndex(refIndices.getRefractiveIndexMedium(wl));
-				mieElement.setRefractiveIndex(refIndices.getRefractiveIndexSphereReal(wl), refIndices.getRefractiveIndexSphereImaginaray(wl));
+				mieElement.setHostRefractiveIndex(refIndices.getRefractiveIndexMedium(wl.getValue()));
+				mieElement.setRefractiveIndex(refIndices.getRefractiveIndexSphereReal(wl.getValue()), refIndices.getRefractiveIndexSphereImaginaray(wl.getValue()));
 				list.addElement(mieElement);
 				//qext is recalculated by MieWrapper if neccessary...
 			}

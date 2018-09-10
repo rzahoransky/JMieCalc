@@ -7,17 +7,17 @@ import errors.WavelengthMismatchException;
 public interface IMieParticlePreset {
 	
 	
-	public double getRefractiveIndexMedium(Wavelengths wl) throws WavelengthMismatchException;
+	public double getRefractiveIndexMedium(double wl) throws WavelengthMismatchException;
 	
-	public void setRefractiveIndexMedium(Wavelengths wl, double indexMedium);
+	public void setRefractiveIndexMedium(double wl, double indexMedium);
 	
-	public double getRefractiveIndexSphereReal(Wavelengths wl) throws WavelengthMismatchException;
+	public double getRefractiveIndexSphereReal(double wl) throws WavelengthMismatchException;
 	
-	public void setRefractiveIndexSphereReal(Wavelengths wl, double indexRealSphere);
+	public void setRefractiveIndexSphereReal(double wl, double indexRealSphere);
 	
-	public double getRefractiveIndexSphereImaginaray(Wavelengths wl) throws WavelengthMismatchException;
+	public double getRefractiveIndexSphereImaginaray(double wl) throws WavelengthMismatchException;
 	
-	public void setRefractiveIndexSphereImaginaray(Wavelengths wl, double indexImaginarySphere);
+	public void setRefractiveIndexSphereImaginaray(double wl, double indexImaginarySphere);
 	
 	public void setValuesTo(IMieParticlePreset particles) throws WavelengthMismatchException;
 

@@ -84,15 +84,15 @@ public class MieParameterGui extends JPanel implements CalculationAssignmentList
 	@Override
 	public void mieParticleChanged() {
 		try {
-			double refMediumValue = CalculationAssignment.getInstance().getParticles().getRefractiveIndexMedium(wl);
+			double refMediumValue = CalculationAssignment.getInstance().getParticles().getRefractiveIndexMedium(wl.getValue());
 			textFields.getTextField(refMedium).setText(String.valueOf(refMediumValue));
 			textFields.getTextField(refMedium).repaint();
 			
-			double sphereReal = CalculationAssignment.getInstance().getParticles().getRefractiveIndexSphereReal(wl);
+			double sphereReal = CalculationAssignment.getInstance().getParticles().getRefractiveIndexSphereReal(wl.getValue());
 			textFields.getTextField(refSphereReal).setText(String.valueOf(sphereReal));
 			textFields.getTextField(refSphereReal).repaint();
 			
-			double sphereIm = CalculationAssignment.getInstance().getParticles().getRefractiveIndexSphereImaginaray(wl);
+			double sphereIm = CalculationAssignment.getInstance().getParticles().getRefractiveIndexSphereImaginaray(wl.getValue());
 			textFields.getTextField(refSphereImag).setText(String.valueOf(sphereIm));
 			textFields.getTextField(refSphereImag).repaint();
 		} catch (WavelengthMismatchException e) {

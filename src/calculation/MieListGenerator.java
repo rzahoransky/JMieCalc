@@ -47,9 +47,9 @@ public class MieListGenerator {
 		for(double curDiameter: sizeParameters.sizes()) {
 			//System.out.println("Generating "+curRadius);
 			MieWrapper element = new MieWrapper();
-			element.setHostRefractiveIndex(particlePresets.getRefractiveIndexMedium(wl));
+			element.setHostRefractiveIndex(particlePresets.getRefractiveIndexMedium(wl.getValue()));
 			element.setRadiusWavelength(curDiameter/2, wl.getValue());
-			element.setRefractiveIndex(particlePresets.getRefractiveIndexSphereReal(wl), particlePresets.getRefractiveIndexSphereImaginaray(wl));
+			element.setRefractiveIndex(particlePresets.getRefractiveIndexSphereReal(wl.getValue()), particlePresets.getRefractiveIndexSphereImaginaray(wl.getValue()));
 			list.addElement(element);
 		}
 		

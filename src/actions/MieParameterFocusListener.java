@@ -58,15 +58,15 @@ public class MieParameterFocusListener implements FocusListener {
 		switch (indexType) {
 		case RefIndexMedium:
 			System.out.println("Setting refIndex");
-			calcAssignment.getParticles().setRefractiveIndexMedium(wl, value);
+			calcAssignment.getParticles().setRefractiveIndexMedium(wl.getValue(), value);
 			break;
 		case RefIndexSphereImaginary:
 			System.out.println("Setting sphere real");
-			calcAssignment.getParticles().setRefractiveIndexSphereImaginaray(wl, value);
+			calcAssignment.getParticles().setRefractiveIndexSphereImaginaray(wl.getValue(), value);
 			break;
 		case RefIndexSphereReal:
 			System.out.println("Setting sphere imag");
-			calcAssignment.getParticles().setRefractiveIndexSphereReal(wl, value);
+			calcAssignment.getParticles().setRefractiveIndexSphereReal(wl.getValue(), value);
 			break;
 		default:
 			break;

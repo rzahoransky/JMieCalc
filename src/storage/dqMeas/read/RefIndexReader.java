@@ -82,9 +82,9 @@ public class RefIndexReader {
 						m.find();
 						double sphereImag = LastResortDoubleParser.parse(m.group());
 						refIndices.addWavelength(wavelength);
-						refIndices.setRefractiveIndexMedium(wl, medium);
-						refIndices.setRefractiveIndexSphereReal(wl, sphereReal);
-						refIndices.setRefractiveIndexSphereImaginaray(wl, sphereImag);
+						refIndices.setRefractiveIndexMedium(wl.getValue(), medium);
+						refIndices.setRefractiveIndexSphereReal(wl.getValue(), sphereReal);
+						refIndices.setRefractiveIndexSphereImaginaray(wl.getValue(), sphereImag);
 					} 
 					
 //					else { //end of file should be reached by now

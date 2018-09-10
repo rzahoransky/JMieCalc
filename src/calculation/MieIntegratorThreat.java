@@ -71,7 +71,7 @@ public class MieIntegratorThreat implements Runnable{
 
 	}
 
-	private double simpsonRule(double x1, double x2, double y1, double y2) {
+	public static double simpsonRule(double x1, double x2, double y1, double y2) {
 		double result=0;
 		result+=(x2-x1)*y1;
 		result+=0.5*(x2-x1)*(y2-y1);

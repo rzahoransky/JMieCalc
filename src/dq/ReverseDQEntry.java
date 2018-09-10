@@ -38,7 +38,4 @@ public class ReverseDQEntry implements Comparable<ReverseDQEntry>{
 	public String toString() {
 		return diameter+"μm("+sigma+")";
 	}
-	
-	
-
 }

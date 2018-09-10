@@ -68,7 +68,7 @@ public class OutputWriter {
 			addToZipFile(fileName, wlQext);
 		}
 		
-		String mieInfo = new MieInfoWriter(wl1, wl2, wl3).getInfoString();
+		String mieInfo = new MieInfoWriter(wl1, wl2, wl3).getInforString();
 		addToZipFile("info_dev.nfo", mieInfo);
 		
 		String dq1 = new DQWriter(wl1, wl2).getDqTable();
