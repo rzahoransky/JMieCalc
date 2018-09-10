@@ -2,14 +2,15 @@ package presets;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import errors.WavelengthMismatchException;
 
 public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 	
-	protected HashMap<Double, Double> refractiveIndexMedium = new HashMap<>(); //wavelength in um -> refractive Index
-	protected HashMap<Double, Double> refractiveIndexSphereReal = new HashMap<>(); //wavelength in um -> refractive Index
-	protected HashMap<Double, Double> refractiveIndexSphereImaginary = new HashMap<>(); //wavelength in um -> refractive Index
+	protected TreeMap<Double, Double> refractiveIndexMedium = new TreeMap<>(); //wavelength in um -> refractive Index
+	protected TreeMap<Double, Double> refractiveIndexSphereReal = new TreeMap<>(); //wavelength in um -> refractive Index
+	protected TreeMap<Double, Double> refractiveIndexSphereImaginary = new TreeMap<>(); //wavelength in um -> refractive Index
 	protected ArrayList<Double> holdsInformationForWavelengths = new ArrayList<>();
 	protected boolean checkForWavelengthMismatch = false;
 	protected String name;
@@ -29,19 +30,19 @@ public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 	@Override
 	public double getRefractiveIndexMedium(double wl) throws WavelengthMismatchException {
 		checkWavelengthInformation(wl);
-		return refractiveIndexMedium.get(wl);
+		return refractiveIndexMedium.get(closestKey(wl, refractiveIndexMedium));
 	}
 
 	@Override
 	public double getRefractiveIndexSphereReal(double wl) throws WavelengthMismatchException {
 		checkWavelengthInformation(wl);
-		return refractiveIndexSphereReal.get(wl);
+		return refractiveIndexSphereReal.get(closestKey(wl, refractiveIndexSphereReal));
 	}
 
 	@Override
 	public double getRefractiveIndexSphereImaginaray(double wl) throws WavelengthMismatchException {
 		checkWavelengthInformation(wl);
-		return refractiveIndexSphereImaginary.get(wl);
+		return refractiveIndexSphereImaginary.get(closestKey(wl, refractiveIndexSphereImaginary));
 	}
 	
 	protected void checkWavelengthInformation(double wl) throws WavelengthMismatchException {
@@ -114,6 +115,31 @@ public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 			refractiveIndexSphereReal.put(wl.getValue(), particles.getRefractiveIndexSphereReal(wl.getValue()));
 			refractiveIndexSphereImaginary.put(wl.getValue(), particles.getRefractiveIndexSphereImaginaray(wl.getValue()));
 		}
+		
+	}
+	
+	protected double maxWavelengthError() {
+		return 0.030;
+	}
+	
+	protected double closestKey(double wl, TreeMap<Double, Double> map) {
+		
+		try {
+			double floorKey = map.floorKey(wl);
+		} catch (NullPointerException e) {
+			return map.ceilingKey(wl);
+		}
+		
+		try {
+			double ceilingKey = map.ceilingKey(wl);
+		} catch (NullPointerException e) {
+			return map.floorKey(wl);
+		}
+		
+		if (Math.abs(wl - map.ceilingKey(wl))<=Math.abs(wl - map.floorKey(wl))) {
+			return map.ceilingKey(wl);
+		}
+		return map.floorKey(wl);
 		
 	}
 
