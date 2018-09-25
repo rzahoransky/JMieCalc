@@ -11,7 +11,7 @@ public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 	protected TreeMap<Double, Double> refractiveIndexMedium = new TreeMap<>(); //wavelength in um -> refractive Index
 	protected TreeMap<Double, Double> refractiveIndexSphereReal = new TreeMap<>(); //wavelength in um -> refractive Index
 	protected TreeMap<Double, Double> refractiveIndexSphereImaginary = new TreeMap<>(); //wavelength in um -> refractive Index
-	protected ArrayList<Double> holdsInformationForWavelengths = new ArrayList<>();
+	//protected ArrayList<Double> holdsInformationForWavelengths = new ArrayList<>();
 	protected boolean checkForWavelengthMismatch = false;
 	protected String name;
 
@@ -47,7 +47,7 @@ public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 	
 	protected void checkWavelengthInformation(double wl) throws WavelengthMismatchException {
 		if (checkForWavelengthMismatch) {
-			if (!holdsInformationForWavelengths.contains(wl)) {
+			if (!refractiveIndexSphereReal.containsKey(wl)) {
 				throw new WavelengthMismatchException("Wavelengths in Preset "+getName()+" do not match. "+
 				getErrorString(wl));
 			}
@@ -58,11 +58,18 @@ public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 		String s;
 		try {
 		s = "Requested: "+wl+" containing: "+
-				holdsInformationForWavelengths.get(0)+", "+
-				holdsInformationForWavelengths.get(1)+", "+
-				holdsInformationForWavelengths.get(2)+".";
+				getWavelengthsString();
 		} catch (Exception e){
 			s="";
+		}
+		return s;
+	}
+	
+	protected String getWavelengthsString() {
+		String s = "";
+		for (Double wl: refractiveIndexSphereReal.keySet()) {
+			s+=wl;
+			s+=" ";
 		}
 		return s;
 	}
@@ -123,6 +130,9 @@ public abstract class AbstractMieParticlePreset implements IMieParticlePreset {
 	}
 	
 	protected double closestKey(double wl, TreeMap<Double, Double> map) {
+		
+		if(map.containsKey(wl))
+			return wl;
 		
 		try {
 			double floorKey = map.floorKey(wl);

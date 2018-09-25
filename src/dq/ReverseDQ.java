@@ -7,6 +7,7 @@ import java.util.List;
 
 import calculation.MieList;
 
+/** List of particle matches against a DQ **/
 public class ReverseDQ {
 
 	private MieList wl1;
@@ -38,15 +39,13 @@ public class ReverseDQ {
 	
 	public List<ReverseDQEntry> getDQHits(double dq) {
 		if (cache.containsKey(dq)) {
-			cacheHits++;
-			System.out.println("Cache Hits: "+cacheHits);
 			return cache.get(dq);
 		}
 			
-		LinkedList<ReverseDQEntry> list = new LinkedList<>();
+		ArrayList<ReverseDQEntry> list = new ArrayList<>(20);
 		for (double sigma: dqs.keySet()) {
 			ArrayList<ReverseDQEntry> currentElement = dqs.get(sigma);
-			for (int i = 1; i<currentElement.size(); i++) { //one dq may point to different particle diameters. Stoping at the first match does not work
+			for (int i = 1; i<currentElement.size(); i++) { //one dq may point to different particle diameters. Stopping at the first match does not work
 				if (checkMatch(currentElement, i, dq)) {
 					list.add(closestElement(currentElement.get(i-1), currentElement.get(i), dq));
 				}
@@ -60,8 +59,6 @@ public class ReverseDQ {
 		if (elem.get(i-1).getDq()<=dq && elem.get(i).getDq()>=dq)
 			return true;
 		if (elem.get(i-1).getDq()>=dq && elem.get(i).getDq()<=dq)
-			return true;
-		if(elem.get(i).getDq()==dq)
 			return true;
 		return false;
 	}

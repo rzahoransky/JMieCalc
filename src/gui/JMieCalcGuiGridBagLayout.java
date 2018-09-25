@@ -10,6 +10,7 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -28,11 +29,11 @@ import presets.Wavelengths;
 public class JMieCalcGuiGridBagLayout extends JFrame{
 	
 	protected GridBagConstraints c;
-	protected FileGui gui = new FileGui("Mie-File: ");
+	protected FileGui gui; 
 	protected PresetsGui presetGui;
 	protected HashMap<Wavelengths, MieParameterGui> mieParams = new HashMap<>();
-	protected SizeParameterGui sizeGui = new SizeParameterGui();
-	protected SigmaParameterGui sigmaGui = new SigmaParameterGui();
+	protected SizeParameterGui sizeGui;
+	protected SigmaParameterGui sigmaGui;
 	
 	public static void main (String[] args) {
 		JMieCalcGuiGridBagLayout gui = new JMieCalcGuiGridBagLayout();
@@ -41,9 +42,15 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 	}
 
 	public JMieCalcGuiGridBagLayout() {
-		
+
 		setLookAndFeel();
+
+		gui = new FileGui("Mie-File: ");
+		sizeGui = new SizeParameterGui();
+		sigmaGui = new SigmaParameterGui();
 		
+		addBorders();
+
 		setTitle("jMieCalc by Richard M. Zahoransky");
 		setSize(new Dimension(750, 450));
 		setResizable(false);
@@ -69,6 +76,11 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 		presetGui.selectionToCalcAssignment();
 	}
 	
+	private void addBorders() {
+		sigmaGui.setBorder(BorderFactory.createEtchedBorder());
+		sizeGui.setBorder(BorderFactory.createEtchedBorder());
+	}
+
 	private void addAboutBtn() {
 		JButton abtbtn = new JButton("about...");
 		JFrame about = new JFrame("About");
@@ -180,6 +192,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 		c.gridy=1;
 		c.gridwidth=c.REMAINDER;
 		presetGui = new PresetsGui();
+		//presetGui.setBorder(BorderFactory.createEtchedBorder());
 		getContentPane().add(presetGui,c);
 	}
 	

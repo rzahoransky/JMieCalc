@@ -27,10 +27,6 @@ public class DieselSoot extends AbstractMieParticlePreset {
 		refractiveIndexSphereImaginary.put(0.844, 0.66);
 		refractiveIndexSphereImaginary.put(1.313, 0.66);
 		refractiveIndexSphereImaginary.put(1.324, 0.66);
-		
-		Double[] wavelengths= {0.673,0.818,1.313};
-		for(double wl:wavelengths)
-			holdsInformationForWavelengths.add(wl);
 	}
 
 }

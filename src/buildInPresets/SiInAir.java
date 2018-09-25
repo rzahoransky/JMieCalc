@@ -21,10 +21,6 @@ public class SiInAir extends AbstractMieParticlePreset {
 		refractiveIndexSphereImaginary.put(0.673, 0.014);
 		refractiveIndexSphereImaginary.put(0.818, 0.006);
 		refractiveIndexSphereImaginary.put(1.313, 0d);
-		
-		Double[] wavelengths= {0.673,0.818,1.313};
-		for(double wl:wavelengths)
-			holdsInformationForWavelengths.add(wl);
 	}
 
 }

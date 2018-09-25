@@ -21,10 +21,6 @@ public class SilverInAir extends AbstractMieParticlePreset {
 		refractiveIndexSphereImaginary.put(0.673, 4.44);
 		refractiveIndexSphereImaginary.put(0.818, 5.5);
 		refractiveIndexSphereImaginary.put(1.313, 8.9538);
-		
-		Double[] wavelengths= {0.673,0.818,1.313};
-		for(double wl:wavelengths)
-			holdsInformationForWavelengths.add(wl);
 	}
 
 }

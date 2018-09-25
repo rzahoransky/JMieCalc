@@ -81,7 +81,7 @@ public class RefIndexReader {
 						double sphereReal = LastResortDoubleParser.parse(m.group());
 						m.find();
 						double sphereImag = LastResortDoubleParser.parse(m.group());
-						refIndices.addWavelength(wavelength);
+						//refIndices.addWavelength(wavelength);
 						refIndices.setRefractiveIndexMedium(wl.getValue(), medium);
 						refIndices.setRefractiveIndexSphereReal(wl.getValue(), sphereReal);
 						refIndices.setRefractiveIndexSphereImaginaray(wl.getValue(), sphereImag);

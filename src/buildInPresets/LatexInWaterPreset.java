@@ -28,10 +28,6 @@ public class LatexInWaterPreset extends AbstractMieParticlePreset {
 		refractiveIndexSphereImaginary.put(0.844, 0d);
 		refractiveIndexSphereImaginary.put(1.313, 0d);
 		refractiveIndexSphereImaginary.put(1.324, 0d);
-		
-		Double[] wavelengths= {0.673,0.818,1.313};
-		for(double wl:wavelengths)
-			holdsInformationForWavelengths.add(wl);
 	}
 
 }

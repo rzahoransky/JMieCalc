@@ -154,6 +154,10 @@ public class FileGui extends JPanel {
 	public File getChoosenFile() {
 		return new File(textField.getText());
 	}
+	
+	public boolean hasChoosenFile() {
+		return (textField.getText()!=null && !textField.getText().isEmpty());
+	}
 
 	private void addFileButton() {
 		c.gridx = 1;
