@@ -49,7 +49,7 @@ public class MieIntegratorThreat implements Runnable{
 					y1 = mie1.qext() * dist.density(x1, false) * Math.pow(x1, 2);
 				} catch (IndexOutOfBoundsException e) {
 					x1=0;
-					y1=mieList.get(i).qext() * dist.density(x1, false) * Math.pow(x1, 2); //Hack to get some reasoneable value
+					y1=mieList.get(i).qext() * dist.density(x1, false) * Math.pow(x1, 2); //Hack to get some reasonable value
 				}
 
 				mie2 = mieList.get(i);
