@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Locale;
 
@@ -35,7 +36,7 @@ public class DQWriter {
 	/** generated table with radius and dq **/
 	public String getDqTable() {
 		StringBuffer sb = new StringBuffer();
-		LinkedList<Double> sortedSigmas = wl1.get(0).getSortedSigmas();
+		ArrayList<Double> sortedSigmas = wl1.get(0).getSortedSigmas();
 		for (int i = 0;i<wl1.size();i++) {
 			
 			MieWrapper mie1 = wl1.get(i);

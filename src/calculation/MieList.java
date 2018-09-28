@@ -2,25 +2,28 @@ package calculation;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.TreeMap;
 
 import errors.IllegalMieListException;
 
 public class MieList implements Iterable<MieWrapper>{
 
-	private ArrayList<MieWrapper> list = new ArrayList<MieWrapper>();
+	private TreeMap<Double,MieWrapper> list = new TreeMap<>();
 	private int currentIndex=0;
+	private ArrayList<MieWrapper> array = new ArrayList<>(100);
 	
 	public MieList() {
 	}
 	
 	public MieList(int size) {
-		list = new ArrayList<>(size);
+		array = new ArrayList<>(size);
 	}
 	
 	private void addMieElement(MieWrapper mieElement) {
 		if(mieElement.getDiameter()==Double.NaN) 
 			throw new IllegalArgumentException("mieElement must have a radius");
-		list.add(mieElement);
+		array.add(mieElement);
+		list.put(mieElement.getDiameter(), mieElement);
 	}
 	
 	public void addElement(MieWrapper element) {
@@ -28,9 +31,9 @@ public class MieList implements Iterable<MieWrapper>{
 	}
 	
 	public void checkConsistency() throws IllegalMieListException {
-		MieWrapper firstElement = list.get(0);
+		MieWrapper firstElement = array.get(0);
 
-		for(MieWrapper check:list) {
+		for(MieWrapper check:list.values()) {
 			if (!sameParameteres(firstElement, check))
 				throw new IllegalMieListException("Parameters in list do not match! "+firstElement+" VS "+check);
 		}
@@ -57,11 +60,11 @@ public class MieList implements Iterable<MieWrapper>{
 
 	@Override
 	public Iterator<MieWrapper> iterator() {
-		return list.iterator();
+		return array.iterator();
 	}
 	
 	public MieWrapper get(int index) {
-		return list.get(index);
+		return array.get(index);
 	}
 	
 	public int size() {
@@ -69,52 +72,53 @@ public class MieList implements Iterable<MieWrapper>{
 	}
 	
 	public MieWrapper getElementForDiameter(double diameter) {
-		for(MieWrapper mie: list) {
-			if(mie.getDiameter()==diameter) {
-				return mie;
-			}
-		}
-		return null;
+		if (!list.containsKey(diameter))
+			return null;
+		return list.get(diameter);
 	}
 	
 	public MieWrapper getClosesElementForDiameter(double diameter) {
-		double distance = Double.MAX_VALUE;
-		MieWrapper closestElement = null;
-		for (MieWrapper mie: list) {
-			if(Math.abs(mie.getDiameter()-diameter)<distance) {
-				distance = Math.abs(mie.getDiameter()-diameter);
-				closestElement = mie;
-			}
-		}
-		return closestElement;
+		return list.get(getClosesMatchingKey(diameter));
 	}
 	
 	public double getWavelength() {
-		return list.get(0).getWavelength();
+		return array.get(0).getWavelength();
 	}
 	
 	public double getRefMedium() {
-		return list.get(0).getRefractiveIndexMedium();
+		return array.get(0).getRefractiveIndexMedium();
 	}
 	
 	public double getRefSphereReal() {
-		return list.get(0).getRefractiveIndexSphereReal();
+		return array.get(0).getRefractiveIndexSphereReal();
 	}
 	
 	public double getRefSphereImag() {
-		return list.get(0).getRefractiveIndexSpereImaginary();
+		return array.get(0).getRefractiveIndexSpereImaginary();
 	}
 	
 	public double getMinDiameter() {
-		return list.get(0).getDiameter();
+		return array.get(0).getDiameter();
 	}
 	
 	public double getMaxDiameter() {
-		return list.get(list.size()-1).getDiameter();
+		return array.get(list.size()-1).getDiameter();
 	}
 	
 	public String toString() {
 		return getWavelength()+"µm ("+getRefMedium()+" / "+getRefSphereReal()+"-"+getRefSphereImag()+"i)";
+	}
+	
+	protected double getClosesMatchingKey(double diameter) {
+		if (diameter>=list.lastKey())
+			return list.lastKey();
+		if (diameter<=list.firstKey())
+			return list.firstKey();
+		if (Math.abs(list.ceilingKey(diameter)-diameter)<Math.abs(list.floorKey(diameter)-diameter)) {
+			return list.ceilingKey(diameter);
+		} else {
+			return list.floorKey(diameter);
+		}
 	}
 
 }

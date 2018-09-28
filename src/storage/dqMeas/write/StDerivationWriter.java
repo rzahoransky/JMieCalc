@@ -26,7 +26,7 @@ public class StDerivationWriter {
 	
 	public String getContent() {
 		StringBuilder sb = new StringBuilder();
-		for(double sigma: list.get(0).getIntegratedQext().keySet()) {
+		for(double sigma: list.get(0).getSortedSigmas()) {
 			sb.append(formatter.format(sigma));
 			sb.append("\t");
 		}

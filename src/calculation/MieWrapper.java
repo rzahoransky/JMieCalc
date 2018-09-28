@@ -1,6 +1,7 @@
 package calculation;
 
 import java.awt.List;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -107,8 +108,8 @@ public class MieWrapper extends Mie implements Comparable<MieWrapper> {
 	 * as of the threated access to the sigma HashMap inidividual sigmas may be
 	 * sorted differently in each MieElement. This method returns the sorted sigmas that are containes within this list.
 	 **/
-	public LinkedList<Double> getSortedSigmas() {
-		LinkedList<Double> result = new LinkedList<>();
+	public ArrayList<Double> getSortedSigmas() {
+		ArrayList<Double> result = new ArrayList<>(getIntegratedQext().keySet().size());
 		result.addAll(getIntegratedQext().keySet());
 		Collections.sort(result);
 		return result;
