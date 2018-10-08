@@ -22,6 +22,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.jfree.chart.block.GridArrangement;
 
 import actions.CalculationAction;
+import actions.ChangeWavelengthAction;
 import actions.DQChartAction;
 import calculation.CalculationAssignment;
 import presets.Wavelengths;
@@ -65,6 +66,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 		addCalcBtn();
 		addShowBtns();
 		addShowDQAfterCalcBtn();
+		addChangeWavelengthBtn();
 		addSizeParameters();
 		addSigmaParameters();
 		addAboutBtn();
@@ -76,6 +78,14 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 		presetGui.selectionToCalcAssignment();
 	}
 	
+	private void addChangeWavelengthBtn() {
+		c.gridx=4;
+		c.gridy=6;
+		JButton changeWL = new JButton(new ChangeWavelengthAction());
+		add(changeWL,c);
+		
+	}
+
 	private void addBorders() {
 		sigmaGui.setBorder(BorderFactory.createEtchedBorder());
 		sizeGui.setBorder(BorderFactory.createEtchedBorder());
@@ -98,7 +108,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 				about.setVisible(true);
 			}
 		});
-		c.gridy=6;
+		c.gridy=7;
 		c.gridx=4;
 		getContentPane().add(abtbtn, c);
 		
@@ -111,7 +121,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 	
 	public void addProgressBar() {
 		c.gridx=0;
-		c.gridy=6;
+		c.gridy=7;
 		c.fill=GridBagConstraints.HORIZONTAL;
 		c.weightx=1;
 		c.gridwidth=4;

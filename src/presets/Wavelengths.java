@@ -3,6 +3,8 @@ package presets;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Represents wavelengths in µm
@@ -67,5 +69,26 @@ public enum Wavelengths {
 
 	public String toString() {
 		return super.toString() + "(" + getValue() + ")";
+	}
+
+	public static void store() {
+		File f = new File("wavelengths");
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(f);
+			fw.write(Double.toString(Wavelengths.WL1.getValue()));
+			fw.write("\r\n");
+			fw.write(Double.toString(Wavelengths.WL2.getValue()));
+			fw.write("\r\n");
+			fw.write(Double.toString(Wavelengths.WL3.getValue()));
+		} catch (IOException e) {
+
+		} finally {
+			try {
+				fw.close();
+			} catch (Exception e) {};
+		}
+
+		
 	}
 }

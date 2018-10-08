@@ -107,7 +107,7 @@ public class MieParameterGui extends JPanel implements CalculationAssignmentList
 
 	@Override
 	public void wavelengthsChanged() {
-		label.setText(("Parameters for WL "+wl.getValue()+"um")); //Or: Wavelength in TextField, make it editable in expert mode
+		label.setText(("Ref. Index for WL "+wl.getValue()+"µm")); //Or: Wavelength in TextField, make it editable in expert mode
 	}
 
 	@Override

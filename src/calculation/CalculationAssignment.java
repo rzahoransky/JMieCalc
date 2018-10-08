@@ -137,4 +137,12 @@ public class CalculationAssignment {
 		return sb.toString();
 	}
 
+	public void changeWavelength(Wavelengths wavelength, double userSetWavelength) {
+		wavelength.setValue(userSetWavelength);
+		for (CalculationAssignmentListener listener: listeners) {
+			listener.wavelengthsChanged();
+		}
+		
+	}
+
 }
