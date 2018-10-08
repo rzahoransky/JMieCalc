@@ -32,6 +32,15 @@ public class MieInfoWriter {
 		fw.close();
 	}
 	
+	public static String getOneLineInfoString(MieList wl1, MieList wl2, MieList wl3) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Wavelength: WL1("+wl1.getWavelength()+")"+ " WL2("+wl2.getWavelength()+")"+ " WL3("+wl3.getWavelength()+"). ");
+		sb.append("Ref.Index Medium: "+wl1.getRefMedium()+". ");
+		sb.append("Ref. Index Sphere: "+wl1.getRefSphereReal()+"-"+wl1.getRefSphereImag()+"i");
+		
+		return sb.toString();
+	}
+	
 	public static String getInfoString(MieList wl1, MieList wl2, MieList wl3) {
 		formatter.setMaximumFractionDigits(8);
 		StringBuilder sb = new StringBuilder();
@@ -58,7 +67,7 @@ public class MieInfoWriter {
 		return getInfoString(wl1, wl2, wl3);
 	}
 	
-	protected static String getEntryOrZero(ArrayList<String> list, int index) {
+	public static String getEntryOrZero(ArrayList<String> list, int index) {
 		try {
 			return list.get(index);
 		} catch (Exception e) {
