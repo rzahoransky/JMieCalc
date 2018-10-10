@@ -65,4 +65,10 @@ public class ProgressGui extends JPanel implements CalculationAssignmentListener
 		
 	}
 
+	@Override
+	public void fileWritten() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

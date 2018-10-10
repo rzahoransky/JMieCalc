@@ -140,4 +140,10 @@ public class MieParameterGui extends JPanel implements CalculationAssignmentList
 		
 	}
 
+	@Override
+	public void fileWritten() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

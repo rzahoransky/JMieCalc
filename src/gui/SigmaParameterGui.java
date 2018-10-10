@@ -202,4 +202,10 @@ public class SigmaParameterGui extends JPanel implements CalculationAssignmentLi
 		
 	}
 
+	@Override
+	public void fileWritten() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

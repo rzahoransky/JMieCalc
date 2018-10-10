@@ -93,6 +93,7 @@ public class OutputWriter {
 		
 		zos.finish();
 		fos.close();
+		CalculationAssignment.getInstance().informOfFileWritten();
 	}
 	
 

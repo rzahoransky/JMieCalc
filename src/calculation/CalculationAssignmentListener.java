@@ -16,4 +16,6 @@ public interface CalculationAssignmentListener {
 	
 	public void outputFileChanged();
 
+	public void fileWritten();
+
 }

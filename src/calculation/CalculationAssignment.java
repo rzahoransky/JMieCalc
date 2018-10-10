@@ -87,7 +87,7 @@ public class CalculationAssignment {
 		
 	}
 	
-	public static CalculationAssignment getCalculationAssignment(IMieParticlePreset particles, IDiameterParametersInterface diameters, ISigmaPreset sigmas) {
+	protected static CalculationAssignment getCalculationAssignment(IMieParticlePreset particles, IDiameterParametersInterface diameters, ISigmaPreset sigmas) {
 		return new CalculationAssignment(particles, diameters, sigmas);
 	}
 	
@@ -141,6 +141,17 @@ public class CalculationAssignment {
 		wavelength.setValue(userSetWavelength);
 		for (CalculationAssignmentListener listener: listeners) {
 			listener.wavelengthsChanged();
+		}
+		
+	}
+
+	public void removeListener(CalculationAssignmentListener mieGUI) {
+		listeners.remove(mieGUI);
+	}
+
+	public void informOfFileWritten() {
+		for (CalculationAssignmentListener listener: listeners) {
+			listener.fileWritten();
 		}
 		
 	}

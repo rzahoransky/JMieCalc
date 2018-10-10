@@ -159,6 +159,12 @@ public class SizeParameterGui extends JPanel implements CalculationAssignmentLis
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void fileWritten() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
