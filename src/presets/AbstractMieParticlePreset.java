@@ -1,7 +1,5 @@
 package presets;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 import errors.WavelengthMismatchException;

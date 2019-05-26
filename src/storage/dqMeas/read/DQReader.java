@@ -2,25 +2,12 @@ package storage.dqMeas.read;
 
 import java.awt.Container;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.io.FileUtilities;
 
 import calculation.MieList;
 import charts.ChartType;
 import charts.Charts;
-import charts.MieChartPanels;
 import errors.WavelengthMismatchException;
 import presets.Wavelengths;
 

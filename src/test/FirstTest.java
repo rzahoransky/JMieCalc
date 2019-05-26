@@ -1,7 +1,5 @@
 package test;
 
-import BMScatt.Mie;
-import MiePar.Qext;
 import calculation.MieWrapper;
 
 public class FirstTest {

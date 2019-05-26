@@ -1,10 +1,7 @@
 package calculation;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
 import BMNum.Complex;

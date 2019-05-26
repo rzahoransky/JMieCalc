@@ -5,11 +5,6 @@ import java.awt.TextField;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import org.jfree.chart.util.RelativeDateFormat;
-
 import calculation.CalculationAssignment;
 import gui.MieParameterGui;
 import presets.RefractiveIndex;

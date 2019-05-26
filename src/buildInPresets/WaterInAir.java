@@ -1,8 +1,6 @@
 package buildInPresets;
 
-import errors.WavelengthMismatchException;
 import presets.AbstractMieParticlePreset;
-import presets.Wavelengths;
 
 public class WaterInAir extends AbstractMieParticlePreset {
 

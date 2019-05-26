@@ -7,7 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
@@ -15,11 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SpringLayout.Constraints;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
-import org.jfree.chart.block.GridArrangement;
 
 import actions.CalculationAction;
 import actions.ChangeWavelengthAction;

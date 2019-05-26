@@ -1,7 +1,5 @@
 package buildInPresets;
 
-import jdistlib.LogNormal;
-import jdistlib.generic.GenericDistribution;
 import presets.AbstractSigmaPreset;
 
 public class NarrowLogNormalDistribution extends AbstractSigmaPreset {

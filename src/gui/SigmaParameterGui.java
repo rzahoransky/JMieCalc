@@ -3,7 +3,6 @@ package gui;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -15,11 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import actions.SigmaStepAction;
-import actions.SizeAction;
 import actions.SpecificSigmaAction;
 import calculation.CalculationAssignment;
 import calculation.CalculationAssignmentListener;
-import presets.IDiameterParametersInterface;
 import presets.ISigmaPreset;
 import presets.RunningSigma;
 

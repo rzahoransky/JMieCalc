@@ -2,33 +2,20 @@
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import ThreadHandling.ThreadHandler;
-import ThreadHandling.ThreadHandlerProgressMonitor;
-import actions.CalculationAction;
-import buildInPresets.LatexInWaterPreset;
-import buildInPresets.NarrowLogNormalDistribution;
 import calculation.CalculationAssignment;
 import calculation.MieIntegratorThreadFactory;
 import calculation.MieList;
 import calculation.MieListCalculator;
 import calculation.MieListGenerator;
-import charts.ChartType;
-import charts.Charts;
-import charts.DQChart;
 import errors.IllegalMieListException;
 import errors.WavelengthMismatchException;
 import gui.JMieCalcGuiGridBagLayout;
-import presets.MieParameters;
-import presets.StandardDiameterParameters;
 import presets.Wavelengths;
 import storage.dqMeas.read.DQReader;
-import storage.dqMeas.write.OutputWriter;
 
 public class MieCalculator {
 	

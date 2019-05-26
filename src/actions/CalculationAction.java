@@ -2,24 +2,19 @@ package actions;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import calculation.CalculationAssignment;
 import calculation.MieList;
-import calculation.MieListGenerator;
 import errors.IllegalMieListException;
 import errors.WavelengthMismatchException;
 import gui.OldMieCalculator;
-import presets.MieParameters;
 import presets.Wavelengths;
-import storage.dqMeas.write.DQWriter;
 import storage.dqMeas.write.OutputWriter;
 
 public class CalculationAction extends AbstractAction {

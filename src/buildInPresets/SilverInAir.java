@@ -1,7 +1,6 @@
 package buildInPresets;
 
 import presets.AbstractMieParticlePreset;
-import presets.Wavelengths;
 
 public class SilverInAir extends AbstractMieParticlePreset {
 

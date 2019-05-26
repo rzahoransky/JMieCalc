@@ -1,42 +1,33 @@
 package gui;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.ListModel;
 
 import buildInPresets.DieselSoot;
 import buildInPresets.LatexInWaterPreset;
-import buildInPresets.NarrowLogNormalDistribution;
 import buildInPresets.OilInWater;
-import buildInPresets.SilverInAir;
-import buildInPresets.SiOinAir;
 import buildInPresets.SiInAir;
 import buildInPresets.SiO2inAir;
+import buildInPresets.SiOinAir;
+import buildInPresets.SilverInAir;
 import buildInPresets.WaterInAir;
 import calculation.CalculationAssignment;
-import calculation.CalculationAssignmentListener;
 import errors.WavelengthMismatchException;
-import presets.ISigmaPreset;
-import presets.IMieParticlePreset;
-import presets.ParticlePreset;
-import presets.StandardDiameterParameters;
 import presets.FixedSigmaParameter;
 import presets.IDiameterParametersInterface;
+import presets.IMieParticlePreset;
+import presets.ISigmaPreset;
+import presets.StandardDiameterParameters;
 
 public class PresetsGui extends JPanel {
 	JComboBox<IDiameterParametersInterface> sizeParamList = new JComboBox<>();

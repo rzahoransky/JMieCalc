@@ -3,19 +3,12 @@ package charts;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.text.NumberFormatter;
 
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.xy.XYDataset;
 
 import calculation.CalculationAssignment;
 import calculation.MieList;

@@ -3,16 +3,14 @@ package calculation;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import buildInPresets.LatexInWaterPreset;
 import buildInPresets.NarrowLogNormalDistribution;
 import errors.WavelengthMismatchException;
-import presets.AbstractDiameterSizeParameters;
 import presets.IDiameterParametersInterface;
+import presets.IMieParticlePreset;
 import presets.ISigmaPreset;
 import presets.StandardDiameterParameters;
-import presets.IMieParticlePreset;
 import presets.Wavelengths;
 
 public class CalculationAssignment {

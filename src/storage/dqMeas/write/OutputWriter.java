@@ -1,7 +1,6 @@
 package storage.dqMeas.write;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,12 +8,8 @@ import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.annotations.XYTextAnnotation;
-
 import calculation.CalculationAssignment;
 import calculation.MieList;
-import calculation.MieWrapper;
 import presets.Wavelengths;
 
 public class OutputWriter {

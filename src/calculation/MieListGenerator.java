@@ -1,11 +1,8 @@
 package calculation;
 
-import java.util.ArrayList;
-
 import errors.WavelengthMismatchException;
-import presets.IMieParticlePreset;
-import presets.AbstractDiameterSizeParameters;
 import presets.IDiameterParametersInterface;
+import presets.IMieParticlePreset;
 //import presets.WavelengthPreset;
 import presets.Wavelengths;
 

@@ -4,8 +4,6 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class PointSpline {
 

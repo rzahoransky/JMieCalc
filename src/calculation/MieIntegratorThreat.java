@@ -1,11 +1,7 @@
 package calculation;
 
-import java.awt.List;
-
 import jdistlib.generic.GenericDistribution;
-import presets.ISigmaPreset;
 import presets.DistributionType;
-import presets.IMieParticlePreset;
 
 /**
  * Integrates a single mieList for a given distribution with given SD

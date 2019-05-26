@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
 
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -15,7 +14,6 @@ import javax.swing.JTextField;
 import actions.SizeAction;
 import calculation.CalculationAssignment;
 import calculation.CalculationAssignmentListener;
-import presets.IDiameterParametersInterface;
 
 public class SizeParameterGui extends JPanel implements CalculationAssignmentListener{
 	

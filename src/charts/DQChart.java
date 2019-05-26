@@ -1,9 +1,6 @@
 package charts;
 
 import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
 
 import javax.swing.JFrame;
 
@@ -17,10 +14,8 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
 
 import calculation.MieList;
-import calculation.MieWrapper;
 
 @Deprecated
 public class DQChart extends ApplicationFrame {

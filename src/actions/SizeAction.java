@@ -1,16 +1,10 @@
 package actions;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.AbstractAction;
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import calculation.CalculationAssignment;
 import gui.SizeParameterGui;

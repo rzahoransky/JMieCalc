@@ -1,7 +1,5 @@
 package presets;
 
-import java.util.HashMap;
-
 import errors.WavelengthMismatchException;
 
 public interface IMieParticlePreset {

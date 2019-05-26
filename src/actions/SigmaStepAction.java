@@ -11,7 +11,6 @@ import javax.swing.event.ChangeListener;
 
 import calculation.CalculationAssignment;
 import gui.SigmaParameterGui;
-import presets.FixedSigmaParameter;
 import presets.RunningSigma;
 
 public class SigmaStepAction extends AbstractAction implements FocusListener, ChangeListener {

@@ -1,5 +1,7 @@
 package calculation;
 
+import java.applet.Applet;
+
 // Here is the Java code for my interpolation applet on 
 //
 //      http://www.wam.umd.edu/~petersd/interp.html
@@ -19,10 +21,17 @@ package calculation;
 //          Curve Applet by Michael Heinrichs
 // Bug: You can drag points out of the drawing area. But then you have
 //      no way of moving them. 
-
-import java.awt.*;
-import java.applet.*;
-
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Color;
+import java.awt.Event;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Panel;
+import java.awt.Rectangle;
 import java.util.Vector;
 
 public class Interp2 extends Applet {

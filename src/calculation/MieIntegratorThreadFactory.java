@@ -3,7 +3,6 @@ package calculation;
 import java.util.ArrayList;
 
 import jdistlib.LogNormal;
-import jdistlib.rng.RandomEngine;
 import presets.ISigmaPreset;
 
 public class MieIntegratorThreadFactory{
