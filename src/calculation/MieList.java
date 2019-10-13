@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import errors.IllegalMieListException;
 
 /**
- * Holds a list of {@link MieWrapper} elements of same opical parameters but with ordered diameter.
+ * Holds a list of {@link MieWrapper} elements of same optical parameters.
  * Diameters and wavelengths are in um.
  * @author richard
  *
@@ -36,12 +36,18 @@ public class MieList implements Iterable<MieWrapper>{
 		addMieElement(element);
 	}
 	
+	/**
+	 * Check if list is sane
+	 * @throws IllegalMieListException
+	 *             if the list contains elements that have different wavelengths or
+	 *             refractive indices
+	 */
 	public void checkConsistency() throws IllegalMieListException {
 		MieWrapper firstElement = array.get(0);
 
-		for(MieWrapper check:list.values()) {
+		for (MieWrapper check : list.values()) {
 			if (!sameParameteres(firstElement, check))
-				throw new IllegalMieListException("Parameters in list do not match! "+firstElement+" VS "+check);
+				throw new IllegalMieListException("Parameters in list do not match! " + firstElement + " VS " + check);
 		}
 	}
 	
@@ -70,6 +76,11 @@ public class MieList implements Iterable<MieWrapper>{
 		return array.iterator();
 	}
 	
+	/**
+	 * Return {@link MieWrapper} element at the index-position.
+	 * @param index index to get with respect to insertation order
+	 * @return {@link MieWrapper} element at index-position
+	 */
 	public MieWrapper get(int index) {
 		return array.get(index);
 	}
@@ -78,28 +89,42 @@ public class MieList implements Iterable<MieWrapper>{
 		return list.size();
 	}
 	
+	/**
+	 * Returns the {@link MieWrapper} element for an exact diameter
+	 * @param diameter Diameter to search for
+	 * @return {@link MieWrapper} element that matches the given diameter. <code>null</code> if none is found
+	 */
 	public MieWrapper getElementForDiameter(double diameter) {
 		if (!list.containsKey(diameter))
 			return null;
 		return list.get(diameter);
 	}
 	
+	/**
+	 * Returns the element in the list so that |<b>diameter</b> - <b>diameter of found element</b>| is minimized
+	 * @param diameter the diameter in um to search for in the list
+	 * @return {@link MieWrapper} element with closes matching diameter
+	 */
 	public MieWrapper getClosesElementForDiameter(double diameter) {
 		return list.get(getClosesMatchingKey(diameter));
 	}
 	
+	/** get the wavelength of this list **/
 	public double getWavelength() {
 		return array.get(0).getWavelength();
 	}
 	
+	/** get the refractive index of the sphere hosting medium **/
 	public double getRefMedium() {
 		return array.get(0).getRefractiveIndexMedium();
 	}
 	
+	/** get the real part of the spheres refractive index **/
 	public double getRefSphereReal() {
 		return array.get(0).getRefractiveIndexSphereReal();
 	}
 	
+	/** get the imaginary part of the spheres refractive index **/
 	public double getRefSphereImag() {
 		return array.get(0).getRefractiveIndexSpereImaginary();
 	}
@@ -116,6 +141,7 @@ public class MieList implements Iterable<MieWrapper>{
 		return getWavelength()+"µm ("+getRefMedium()+" / "+getRefSphereReal()+"-"+getRefSphereImag()+"i)";
 	}
 	
+	/** get the key in the list that matches most closely to diameter **/
 	protected double getClosesMatchingKey(double diameter) {
 		if (diameter>=list.lastKey())
 			return list.lastKey();
