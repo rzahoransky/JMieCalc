@@ -6,6 +6,12 @@ import java.util.TreeMap;
 
 import errors.IllegalMieListException;
 
+/**
+ * Holds a list of {@link MieWrapper} elements of same opical parameters but with ordered diameter.
+ * Diameters and wavelengths are in um.
+ * @author richard
+ *
+ */
 public class MieList implements Iterable<MieWrapper>{
 
 	private TreeMap<Double,MieWrapper> list = new TreeMap<>();
@@ -39,6 +45,7 @@ public class MieList implements Iterable<MieWrapper>{
 		}
 	}
 	
+	/** test if all particles in list share same optical parameters**/
 	private boolean sameParameteres(MieWrapper firstElement, MieWrapper secondElement) {
 		double radius = firstElement.getDiameter();
 		double medium = firstElement.getRefractiveIndexMedium();

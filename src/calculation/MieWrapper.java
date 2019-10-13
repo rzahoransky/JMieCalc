@@ -69,10 +69,12 @@ public class MieWrapper extends Mie implements Comparable<MieWrapper> {
 		return refractiveIndexSpereImaginary;
 	}
 
+	/** get diameter of particle in um **/
 	public double getDiameter() {
 		return radius*2;
 	}
 	
+	/** get radius of particle in um **/
 	private double getRadius() {
 		return radius;
 	}
