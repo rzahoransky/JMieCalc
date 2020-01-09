@@ -8,7 +8,7 @@ public interface CalculationAssignmentListener {
 
 	public void calculationFinished();
 
-	public void progress();
+	public void progress(double fractionOfOne);
 	
 	public void diametersChanged();
 	

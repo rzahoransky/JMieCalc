@@ -41,8 +41,8 @@ public class ProgressGui extends JPanel implements CalculationAssignmentListener
 	}
 
 	@Override
-	public void progress() {
-		progressBar.setValue(CalculationAssignment.getInstance().getProgress());
+	public void progress(double fraction) {
+		progressBar.setValue((int) (fraction*100));
 		progressBar.repaint();
 		
 	}

@@ -46,7 +46,7 @@ public class ShowAfterCalculationGUI extends JPanel implements CalculationAssign
 	}
 
 	@Override
-	public void progress() {
+	public void progress(double fraction) {
 		// TODO Auto-generated method stub
 		
 	}

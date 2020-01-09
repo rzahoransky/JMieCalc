@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  */
 public enum Wavelengths {
-	WL1(0.637), WL2(0.811), WL3(1.316); // default Values
+	WL1(0.637), WL2(0.811), WL3(1.316); // default values
 
 	private double wavelength;
 
@@ -42,7 +42,7 @@ public enum Wavelengths {
 		}
 	}
 
-	/** get Wavelength in µm **/
+	/** set Wavelength in µm **/
 	Wavelengths(double wavelength) {
 		this.wavelength = wavelength;
 	}

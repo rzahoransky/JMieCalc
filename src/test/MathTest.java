@@ -22,6 +22,8 @@ class MathTest {
 	void logNormalTest() {
 		assertEquals(0.0250, test.density(1.5, false), 0.00005);
 		assertEquals(2.41970, test.density(1, false), 0.00005);
+		assertEquals(0, test.density(-1, false), 0.00005);
+		assertEquals(0, test.density(0, false), 0.00005);
 	}
 	
 	@Test
@@ -46,8 +48,6 @@ class MathTest {
 		preset = PresetFactory.getSizePreset(start, end, steps, true);
 		assertEquals(start, preset.getMinSize());
 		assertEquals(end, preset.getMaxSize());
-		
-		
 	}
 
 }

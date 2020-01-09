@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import buildInPresets.DieselSoot;
 import buildInPresets.LatexInWaterPreset;
+import buildInPresets.OilInAir;
 import buildInPresets.OilInWater;
 import buildInPresets.SiInAir;
 import buildInPresets.SiO2inAir;
@@ -183,6 +184,7 @@ public class PresetsGui extends JPanel {
 		particleDistModel.addElement(new LatexInWaterPreset());
 		particleDistModel.addElement(new DieselSoot());
 		particleDistModel.addElement(new WaterInAir());
+		particleDistModel.addElement(new OilInAir());
 		particleDistModel.addElement(new OilInWater());
 		particleDistModel.addElement(new SilverInAir());
 		particleDistModel.addElement(new SiOinAir());

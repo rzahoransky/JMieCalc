@@ -4,17 +4,18 @@ import jdistlib.generic.GenericDistribution;
 import presets.DistributionType;
 
 /**
- * Integrates a single mieList for a given distribution with given SD
+ * Calculation of qext mie theory transmission for a non uniform particle diameter distribution.
+ * Integrates a single mieList for a given distribution
  * @author richard
  *
  */
-public class MieIntegratorThreat implements Runnable{
+public class MieIntegratorThread implements Runnable{
 
 	private DistributionType type;
 	private MieList mieList;
 	private double SD;
 
-	public MieIntegratorThreat(MieList mielist, DistributionType type, double SD) {
+	public MieIntegratorThread(MieList mielist, DistributionType type, double SD) {
 		this.mieList=mielist;
 		this.type=type;
 		this.SD=SD;
@@ -45,7 +46,7 @@ public class MieIntegratorThreat implements Runnable{
 					y1 = mie1.qext() * dist.density(x1, false) * Math.pow(x1, 2);
 				} catch (IndexOutOfBoundsException e) {
 					x1=0;
-					y1=mieList.get(i).qext() * dist.density(x1, false) * Math.pow(x1, 2); //Hack to get some reasonable value
+					y1=mieList.get(i).qext() * dist.density(x1, false) * Math.pow(x1, 2); //get some reasonable value at boundaries
 				}
 
 				mie2 = mieList.get(i);
@@ -76,7 +77,7 @@ public class MieIntegratorThreat implements Runnable{
 	}
 	
 	public String toString() {
-		return "Job for WL "+mieList.get(0).getWavelength()+" and SD: "+SD;
+		return "WL "+mieList.get(0).getWavelength()+" with SD: "+SD+" calculation thread";
 	}
 
 

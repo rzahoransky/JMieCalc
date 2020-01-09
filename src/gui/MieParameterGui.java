@@ -109,7 +109,7 @@ public class MieParameterGui extends JPanel implements CalculationAssignmentList
 	}
 
 	@Override
-	public void progress() {
+	public void progress(double fraction) {
 		// TODO Auto-generated method stub
 		
 	}

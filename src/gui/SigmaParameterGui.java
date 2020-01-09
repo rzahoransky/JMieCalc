@@ -142,7 +142,7 @@ public class SigmaParameterGui extends JPanel implements CalculationAssignmentLi
 	}
 
 	@Override
-	public void progress() {
+	public void progress(double fraction) {
 		// TODO Auto-generated method stub
 		
 	}

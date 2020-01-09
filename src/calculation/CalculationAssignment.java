@@ -23,14 +23,14 @@ public class CalculationAssignment {
 	HashMap<Wavelengths, MieList> mieLists = new HashMap<>();
 	int progress;
 	private File outputFile;
-	private boolean isFinished;
+	private boolean isCalculated;
 	
 	public int getProgress() {
 		return progress;
 	}
 
 	public boolean isFinished() {
-		return isFinished;
+		return isCalculated;
 	}
 
 	public HashMap<Wavelengths,MieList> getMieLists() {
@@ -39,7 +39,7 @@ public class CalculationAssignment {
 	
 	public void setResultMieList(HashMap<Wavelengths, MieList> mieLists) {
 		this.mieLists=mieLists;
-		isFinished=false;
+		isCalculated=true;
 	}
 
 	public IDiameterParametersInterface getDiameters() {
@@ -48,7 +48,7 @@ public class CalculationAssignment {
 
 	public void setDiameters(IDiameterParametersInterface diameters) {
 		this.diameters.setValuesTo(diameters);
-		isFinished=false;
+		isCalculated=false;
 		for(CalculationAssignmentListener listener: listeners)
 			listener.diametersChanged();
 	}
@@ -59,7 +59,7 @@ public class CalculationAssignment {
 
 	public void setSigmas(ISigmaPreset distribution) {
 		this.sigmas.setValuesTo(distribution);
-		isFinished=false;
+		isCalculated=false;
 		for(CalculationAssignmentListener listener: listeners)
 			listener.sigmaChanged();
 	}
@@ -72,7 +72,7 @@ public class CalculationAssignment {
 		this.particles.setValuesTo(particles);
 		for(CalculationAssignmentListener listener: listeners)
 			listener.mieParticleChanged();
-		isFinished=false;
+		isCalculated=false;
 	}
 
 	private CalculationAssignment(IMieParticlePreset particles, IDiameterParametersInterface diameters, ISigmaPreset sigmas) {
@@ -98,17 +98,16 @@ public class CalculationAssignment {
 	}
 	
 	public void informOfCalculationFinished() {
+		isCalculated=true;
 		for(CalculationAssignmentListener listener:listeners)
 			listener.calculationFinished();
-		
-		isFinished=true;
 	}
 	
 	public void setProgress(int current, int end) {
 		progress = (int) ((current/(double)end)*100);
-		System.out.println(progress+"%");
+		//System.out.println(progress+"%");
 		for(CalculationAssignmentListener listener:listeners)
-			listener.progress();
+			listener.progress(progress/100d);
 	}
 
 	public void setOutputFile(File file) {

@@ -9,11 +9,11 @@ public class LatexInWaterPreset extends AbstractMieParticlePreset {
 		checkForWavelengthMismatch=false;
 		
 		//how to use wavelength sensitive refractive indices:
-		refractiveIndexMedium.put(0.673, 1.33);
-		refractiveIndexMedium.put(0.818, 1.33);
-		refractiveIndexMedium.put(0.844, 1.33);
-		refractiveIndexMedium.put(1.313, 1.33);
-		refractiveIndexMedium.put(1.324, 1.33);
+		refractiveIndexMedium.put(0.673, 1.333);
+		refractiveIndexMedium.put(0.818, 1.333);
+		refractiveIndexMedium.put(0.844, 1.333);
+		refractiveIndexMedium.put(1.313, 1.333);
+		refractiveIndexMedium.put(1.324, 1.333);
 		
 		refractiveIndexSphereReal.put(0.673, 1.59);
 		refractiveIndexSphereReal.put(0.818, 1.59);

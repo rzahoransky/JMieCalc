@@ -4,9 +4,11 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-/// <summary>
-/// Bezier Spline methods
-/// </summary>
+
+/**
+ * Bezier Spline method
+ *
+ */
 public class BezierSpline {
 	ArrayList<Point2D.Double> firstControlPoints = new ArrayList<>();
 	ArrayList<Point2D.Double> secondControlPoints = new ArrayList<>();
@@ -23,6 +25,10 @@ public class BezierSpline {
 	/// parameter must be not null.</exception>
 	/// <exception cref="ArgumentException"><paramref name="knots"/>
 	/// array must contain at least two points.</exception>
+	/**
+	 * Get open-ended Bezier Spline Control Points.
+	 * @param knots Knot Bezier spline points
+	 */
 	public BezierSpline(List<Point2D.Double> knots) {
 		int n = knots.size() - 1;
 		if (n == 1) { // Special case: Bezier curve should be a straight line.

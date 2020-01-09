@@ -20,7 +20,7 @@ public class MieIntegratorThreadFactory{
 		//System.out.println("Adding Distributions");
 		for(double sd:distribution.getSDs()) {
 			//System.out.println("Traversing for "+list.get(0).getWavelength()+" and SD"+sd);
-			threads.add(new Thread(new MieIntegratorThreat(list, distribution.getType(), sd)));
+			threads.add(new Thread(new MieIntegratorThread(list, distribution.getType(), sd)));
 		}
 		
 	}

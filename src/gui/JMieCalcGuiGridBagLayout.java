@@ -26,7 +26,7 @@ import presets.Wavelengths;
 public class JMieCalcGuiGridBagLayout extends JFrame{
 	
 	protected GridBagConstraints c;
-	protected FileGui gui; 
+	protected FileGui fileGui; 
 	protected PresetsGui presetGui;
 	protected HashMap<Wavelengths, MieParameterGui> mieParams = new HashMap<>();
 	protected SizeParameterGui sizeGui;
@@ -42,14 +42,14 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 
 		setLookAndFeel();
 
-		gui = new FileGui("Mie-File: ");
+		fileGui = new FileGui("Mie-File: ");
 		sizeGui = new SizeParameterGui();
 		sigmaGui = new SigmaParameterGui();
 		
 		addBorders();
 
 		setTitle("jMieCalc by Richard M. Zahoransky");
-		setSize(new Dimension(750, 450));
+		setSize(new Dimension(750, 500));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new GridBagLayout());
@@ -112,7 +112,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 
 	public JMieCalcGuiGridBagLayout(String path) {
 		this();
-		gui.setFile(new File(path));
+		fileGui.setFile(new File(path));
 	}
 	
 	public void addProgressBar() {
@@ -190,7 +190,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 		c.gridy=0;
 		c.gridwidth=4;
 		c.insets = new Insets(10, 10, 10, 10);
-		getContentPane().add(gui,c);
+		getContentPane().add(fileGui,c);
 	}
 	
 	public void addPresets() {

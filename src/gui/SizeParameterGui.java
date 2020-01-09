@@ -132,7 +132,7 @@ public class SizeParameterGui extends JPanel implements CalculationAssignmentLis
 	}
 
 	@Override
-	public void progress() {
+	public void progress(double fraction) {
 		// TODO Auto-generated method stub
 		
 	}

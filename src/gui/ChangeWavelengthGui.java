@@ -99,7 +99,8 @@ public class ChangeWavelengthGui extends JFrame {
 		
 		public WavelengthBox(Wavelengths wl) {
 			this.wl = wl;
-			descriptor = new JLabel("WL "+(wl.ordinal()+1)+": ");
+			//descriptor = new JLabel("WL "+(wl.ordinal()+1)+": ");
+			descriptor = new JLabel(wl.name()+": ");
 			wavelength = new JTextField();
 			wavelength.setText(Double.toString(wl.getValue()));
 			setLayout(new GridBagLayout());
