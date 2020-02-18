@@ -72,8 +72,9 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 		
 		double start = (Math.log(getMinSize()) / Math.log(10));
 		double end = (Math.log(getMaxSize()) / Math.log(10));
+		double increment = (end-start)/getSteps();
 		
-		for (double i=start;i<end;i+=(end-start)/getSteps()) {
+		for (double i=start;i<end;i+=increment) {
 			result.add(Math.pow(10, i));
 		}
 		
@@ -84,9 +85,12 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 
 	protected LinkedList<Double> createLinearSteps(){
 		LinkedList<Double> result = new LinkedList<>();
-		for (double i = getMinSize(); i < getMaxSize(); i += getSingleStep()) {
+		double increment = getSingleStep();
+		
+		for (double i = getMinSize(); i <= getMaxSize(); i += increment) {
 			result.add(i);
 		}
+		
 		return result;
 	}
 	

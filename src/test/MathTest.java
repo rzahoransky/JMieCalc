@@ -6,34 +6,46 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import jdistlib.LogNormal;
+import jdistlib.Normal;
 import jdistlib.generic.GenericDistribution;
 import presets.AbstractDiameterSizeParameters;
 import presets.PresetFactory;
 
 class MathTest {
-	GenericDistribution test;
+	GenericDistribution logNormal;
+	GenericDistribution normal;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		test = new LogNormal(0.1, 0.1);
+		logNormal = new LogNormal(0.1, 0.1);
+		normal = new Normal(0.1, 0.1);
 	}
 
 	@Test
 	void logNormalTest() {
-		assertEquals(0.0250, test.density(1.5, false), 0.00005);
-		assertEquals(2.41970, test.density(1, false), 0.00005);
-		assertEquals(0, test.density(-1, false), 0.00005);
-		assertEquals(0, test.density(0, false), 0.00005);
+		assertEquals(0.0250, logNormal.density(1.5, false), 0.00005);
+		assertEquals(2.41970, logNormal.density(1, false), 0.00005);
+		assertEquals(0, logNormal.density(-1, false), 0.00005);
+		assertEquals(0, logNormal.density(0, false), 0.00005);
 	}
 	
 	@Test
-	void integrationTest() {
+	void logNormalIntegrationTest() {
+		assertEquals(1, testDistribution(logNormal), 0.001);
+	}
+	
+	@Test
+	void normalIntegrationTest() {
+		assertEquals(1, testDistribution(normal), 0.001);
+	}
+	
+	 double testDistribution(GenericDistribution dist) {
 		double integralSum = 0;
-		double step = 0.01;
-		for (double i = 0.0;i<100;i+=step) {
-			integralSum+=test.density(i, false) * step;
+		double step = 0.001;
+		for (double i = -100;i<100;i+=step) {
+			integralSum+=dist.density(i, false) * step; //rough approximation
 		}
-		assertEquals(1, integralSum, 0.001);
+		return integralSum;
 	}
 	
 	@Test

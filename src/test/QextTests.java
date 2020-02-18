@@ -23,6 +23,7 @@ class QextTests {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		//setup MieWrappers with diameter and optical parameters for three wavelengths
 		mie1wl1 = new MieWrapper();
 		mie1wl1.setRadiusWavelength(diameter/2,wl1);
 		mie1wl1.setRefractiveIndex(refractiveIndexSphere, 0);
@@ -44,7 +45,18 @@ class QextTests {
 		assertFalse(mie1wl1.isCalculated());
 		mie1wl1.calcScattCoeffs();
 		assertTrue(mie1wl1.isCalculated());
-		assertEquals(qExtWl1, mie1wl1.qext(), 0.001);
+		assertEquals(qExtWl1, mie1wl1.qext(), 0.001); //is Qext calculated correct?
+	}
+	
+	@Test
+	void testUnequal() {
+		mie1wl1.calcScattCoeffs();
+		mie2wl2.calcScattCoeffs();
+		mie3wl1.calcScattCoeffs();
+		
+		assertNotEquals(mie1wl1.qext(), mie2wl2.qext());
+		assertNotEquals(mie1wl1.qext(), mie3wl1.qext());
+		assertNotEquals(mie2wl2.qext(), mie3wl1.qext());
 	}
 
 }
