@@ -32,7 +32,7 @@ public class QextWriter {
 			formatter.setMaximumFractionDigits(12);
 			sb.append(QextHeader.getMieHeader(list));
 			for (MieWrapper mie : list) {
-				sb.append(formatter.format(mie.getDiameter()));
+				sb.append(formatter.format(mie.getDiameter())); //output diameter
 				sb.append(" \t ");
 				sb.append(formatter.format(mie.qext()));
 				sb.append(System.lineSeparator());
@@ -41,7 +41,7 @@ public class QextWriter {
 			formatter=NumberFormat.getInstance(Locale.GERMANY);
 			formatter.setMaximumFractionDigits(12);
 			for (MieWrapper mie : list) {
-				sb.append(formatter.format(mie.getDiameter()));
+				sb.append(formatter.format(mie.getDiameter())); //output diameter
 				sb.append(" \t ");
 				for(Double sigma:mie.getSortedSigmas()) {
 					sb.append(formatter.format(mie.getIntegratedQext().get(sigma)));

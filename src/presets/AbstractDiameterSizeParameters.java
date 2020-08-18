@@ -7,8 +7,8 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 	
 	protected LinkedList<Double> sizes;
 	protected boolean logarithmic;
-	protected double start;
-	protected double end;
+	protected double startDiameter;
+	protected double endDiameter;
 	protected int steps;
 	private String name;
 	
@@ -18,8 +18,8 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 	
 	public AbstractDiameterSizeParameters(double start, double end, int steps, boolean logarithmic) {
 		this.logarithmic=logarithmic;
-		this.start=start;
-		this.end=end;
+		this.startDiameter=start;
+		this.endDiameter=end;
 		this.steps=steps;
 		sizes();
 	}
@@ -33,15 +33,15 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 	}
 
 	public double getSingleStep() {
-		return (getMaxSize()-getMinSize())/getSteps();
+		return (getMaxDiameterSize()-getMinDiameterSize())/getSteps();
 	}
 	
-	public double getMinSize() {
-		return start;
+	public double getMinDiameterSize() {
+		return startDiameter;
 	}
 
-	public double getMaxSize() {
-		return end;
+	public double getMaxDiameterSize() {
+		return endDiameter;
 	}
 	
 	public int getSteps() {
@@ -70,8 +70,8 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 	protected LinkedList<Double> createLogarithmicSteps() {
 		LinkedList<Double> result = new LinkedList<>();
 		
-		double start = (Math.log(getMinSize()) / Math.log(10));
-		double end = (Math.log(getMaxSize()) / Math.log(10));
+		double start = (Math.log(getMinDiameterSize()) / Math.log(10));
+		double end = (Math.log(getMaxDiameterSize()) / Math.log(10));
 		double increment = (end-start)/getSteps();
 		
 		for (double i=start;i<end;i+=increment) {
@@ -87,7 +87,7 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 		LinkedList<Double> result = new LinkedList<>();
 		double increment = getSingleStep();
 		
-		for (double i = getMinSize(); i <= getMaxSize(); i += increment) {
+		for (double i = getMinDiameterSize(); i <= getMaxDiameterSize(); i += increment) {
 			result.add(i);
 		}
 		
@@ -96,15 +96,15 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 	
 	public String toString() {
 		String logOrLinear = (logarithmic)?"logaritmical":"linear";
-		return start+"..."+end+"("+steps+" steps) ("+logOrLinear+")";
+		return startDiameter+"..."+endDiameter+"("+steps+" steps) ("+logOrLinear+")";
 	}
 
 	@Override
 	public void setValuesTo(IDiameterParametersInterface diameters) {
 		this.logarithmic=diameters.isLogarithmic();
 		this.sizes=null;
-		this.start=diameters.getMinSize();
-		this.end=diameters.getMaxSize();
+		this.startDiameter=diameters.getMinDiameterSize();
+		this.endDiameter=diameters.getMaxDiameterSize();
 		this.steps=diameters.getSteps();
 		this.name="User defined";
 		

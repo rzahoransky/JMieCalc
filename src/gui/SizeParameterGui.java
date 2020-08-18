@@ -140,8 +140,8 @@ public class SizeParameterGui extends JPanel implements CalculationAssignmentLis
 	@Override
 	public void diametersChanged() {
 		CalculationAssignment calcAssignment = CalculationAssignment.getInstance();
-		start.setText(String.valueOf(calcAssignment.getDiameters().getMinSize()));
-		end.setText(String.valueOf(calcAssignment.getDiameters().getMaxSize()));
+		start.setText(String.valueOf(calcAssignment.getDiameters().getMinDiameterSize()));
+		end.setText(String.valueOf(calcAssignment.getDiameters().getMaxDiameterSize()));
 		steps.setText(String.valueOf(calcAssignment.getDiameters().getSteps()));
 		logarithmic.setSelected(calcAssignment.getDiameters().isLogarithmic());
 	}

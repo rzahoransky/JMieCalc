@@ -27,7 +27,7 @@ public class MieList implements Iterable<MieWrapper>{
 	
 	private void addMieElement(MieWrapper mieElement) {
 		if(mieElement.getDiameter()==Double.NaN) 
-			throw new IllegalArgumentException("mieElement must have a radius");
+			throw new IllegalArgumentException("mieElement must have a diameter");
 		array.add(mieElement);
 		list.put(mieElement.getDiameter(), mieElement);
 	}
@@ -53,7 +53,6 @@ public class MieList implements Iterable<MieWrapper>{
 	
 	/** test if all particles in list share same optical parameters**/
 	private boolean sameParameteres(MieWrapper firstElement, MieWrapper secondElement) {
-		double radius = firstElement.getDiameter();
 		double medium = firstElement.getRefractiveIndexMedium();
 		double wavelength = firstElement.getWavelength();
 		double refIndParticleReal = firstElement.getRefractiveIndexSphereReal();

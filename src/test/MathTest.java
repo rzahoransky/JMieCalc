@@ -54,12 +54,12 @@ class MathTest {
 		double end = 1d;
 		int steps = 10;
 		AbstractDiameterSizeParameters preset = PresetFactory.getSizePreset(start, end, steps, false);
-		assertEquals(start, preset.getMinSize());
-		assertEquals(end, preset.getMaxSize());
+		assertEquals(start, preset.getMinDiameterSize());
+		assertEquals(end, preset.getMaxDiameterSize());
 		
 		preset = PresetFactory.getSizePreset(start, end, steps, true);
-		assertEquals(start, preset.getMinSize());
-		assertEquals(end, preset.getMaxSize());
+		assertEquals(start, preset.getMinDiameterSize());
+		assertEquals(end, preset.getMaxDiameterSize());
 	}
 
 }

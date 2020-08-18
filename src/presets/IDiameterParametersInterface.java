@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface IDiameterParametersInterface{
 	
-	public double getMinSize();
-	public double getMaxSize();
+	public double getMinDiameterSize();
+	public double getMaxDiameterSize();
 	public int getSteps();
 	public String getName();
 	
