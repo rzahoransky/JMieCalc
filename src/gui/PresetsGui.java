@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import buildInPresets.DieselSoot;
 import buildInPresets.LatexInWaterPreset;
+import buildInPresets.NaCLInAir;
 import buildInPresets.OilInAir;
 import buildInPresets.OilInWater;
 import buildInPresets.SiInAir;
@@ -190,6 +191,7 @@ public class PresetsGui extends JPanel {
 		particleDistModel.addElement(new SiOinAir());
 		particleDistModel.addElement(new SiO2inAir());
 		particleDistModel.addElement(new SiInAir());
+		particleDistModel.addElement(new NaCLInAir());
 		//JComboBox<MieParticlePreset> sizeParams = new JComboBox<>(particleDistModel);
 		return particleDistModel;
 	}
