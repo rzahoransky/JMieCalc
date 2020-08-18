@@ -9,13 +9,13 @@ import presets.DistributionType;
  * @author richard
  *
  */
-public class MieIntegratorThread implements Runnable{
+public class MieIntegratorRunnable implements Runnable{
 
 	private DistributionType type;
 	private MieList mieList;
 	private double SD;
 
-	public MieIntegratorThread(MieList mielist, DistributionType type, double SD) {
+	public MieIntegratorRunnable(MieList mielist, DistributionType type, double SD) {
 		this.mieList=mielist;
 		this.type=type;
 		this.SD=SD;
@@ -28,9 +28,10 @@ public class MieIntegratorThread implements Runnable{
 		GenericDistribution dist;
 		for (MieWrapper element : mieList) {
 			// logNormal distribution for current particle radius.
+			//Calculate weighted integral for this element
 			dist = DistributionFactory.getDistribution(type, SD, Math.log(element.getDiameter()));
 
-			// integrate over all radiuses
+			// integrate over all radiuses (total list)
 			double integral = 0;
 			MieWrapper mie1;
 			MieWrapper mie2;

@@ -98,13 +98,13 @@ public class MieWrapper extends Mie implements Comparable<MieWrapper> {
 	}
 	
 	public String toString() {
-		return "Radius: "+getDiameter()+" Medium "+ getRefractiveIndexMedium()+
+		return "Diameter: "+getDiameter()+" Medium "+ getRefractiveIndexMedium()+
 				" Sphere: "+getRefractiveIndexSphereReal()+"+"+getRefractiveIndexSpereImaginary()+"i"+
 				"Wavelength: "+getWavelength();
 	}
 	
 	/**
-	 * as of the threated access to the sigma HashMap inidividual sigmas may be
+	 * as of the threaded access to the sigma HashMap inidividual sigmas may be
 	 * sorted differently in each MieElement. This method returns the sorted sigmas that are containes within this list.
 	 **/
 	public ArrayList<Double> getSortedSigmas() {
