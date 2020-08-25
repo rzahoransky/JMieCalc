@@ -24,7 +24,6 @@ public class MieIntegratorRunnable implements Runnable{
 
 	@Override
 	public void run() {
-		double particleSizeStep = mieList.get(1).getDiameter() - mieList.get(0).getDiameter();
 		GenericDistribution dist;
 		for (MieWrapper element : mieList) {
 			// logNormal distribution for current particle radius.
@@ -41,7 +40,7 @@ public class MieIntegratorRunnable implements Runnable{
 				double y1;
 				double y2;
 
-				try {
+				try { 
 					mie1 = mieList.get(i - 1);
 					x1 = mie1.getDiameter();
 					y1 = mie1.qext() * dist.density(x1, false) * Math.pow(x1, 2);

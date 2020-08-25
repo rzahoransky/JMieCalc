@@ -75,7 +75,7 @@ public class MieWrapper extends Mie implements Comparable<MieWrapper> {
 	}
 	
 	/** get radius of particle in um **/
-	private double getRadius() {
+	public double getRadius() {
 		return radius;
 	}
 
