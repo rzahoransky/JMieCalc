@@ -24,7 +24,7 @@ public class SigmaParameterGui extends JPanel implements CalculationAssignmentLi
 	
 	GridBagConstraints c = new GridBagConstraints();
 	JSpinner start = new JSpinner(new SpinnerNumberModel(0.005, 0.001, 1, 0.1));
-	JSpinner end = new JSpinner(new SpinnerNumberModel(0.2, 0.01, 3, 0.1));
+	JSpinner end = new JSpinner(new SpinnerNumberModel(0.2, 0.01, 10, 0.1));
 	JSpinner steps = new JSpinner(new SpinnerNumberModel(3, 1, 30, 1));
 	JCheckBox logarithmic = new JCheckBox(null,null,true);
 	JTextField specificSigmas = new JTextField();

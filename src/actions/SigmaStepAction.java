@@ -6,8 +6,10 @@ import java.awt.event.FocusListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.plaf.OptionPaneUI;
 
 import calculation.CalculationAssignment;
 import gui.SigmaParameterGui;
@@ -34,10 +36,12 @@ public class SigmaStepAction extends AbstractAction implements FocusListener, Ch
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		double start = gui.getStartValue();
-		double end = gui.getEndValue();
+		double start = Math.min(gui.getStartValue(), gui.getEndValue());
+		double end = Math.max(gui.getStartValue(), gui.getEndValue());
 		int steps = gui.getStepsValue();
 		boolean log = gui.logarithmic();
+		if (equal(start,end))
+			return;
 		runningSigma=new RunningSigma(start, end, steps, log);
 		CalculationAssignment.getInstance().setSigmas(runningSigma);
 		
@@ -46,6 +50,15 @@ public class SigmaStepAction extends AbstractAction implements FocusListener, Ch
 		gui.setSteps(steps);
 		gui.setLogarithmic(log);
 		
+	}
+
+	private boolean equal(double start, double end) {
+		if (Math.abs(end-start) <= Double.MIN_VALUE*10) {
+			JOptionPane.showMessageDialog(gui, "Same start and end value");
+			return true;
+		}
+		
+		return false;
 	}
 
 	@Override
