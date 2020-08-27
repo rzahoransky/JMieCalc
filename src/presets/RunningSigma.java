@@ -35,7 +35,7 @@ public class RunningSigma extends AbstractSigmaPreset {
 		double start = (Math.log(this.start) / Math.log(10));
 		double end = (Math.log(this.end) / Math.log(10));
 		
-		for (double i=start;i<end;i+=(end-start)/steps) {
+		for (double i=start;i<=end;i+=(end-start)/(steps-1)) {
 			double logValue = Math.pow(10, i);
 			double rounded = Math.floor(logValue*1000)/1000;
 			result.add(rounded);
@@ -49,7 +49,7 @@ public class RunningSigma extends AbstractSigmaPreset {
 
 	protected ArrayList<Double> createLinearSteps(){
 		ArrayList<Double> result = new ArrayList<>();
-		for (double i = start; i < end; i += (end-start)/steps) {
+		for (double i = start; i <= end; i += (end-start)/(steps-1)) {
 			double rounded = Math.floor(i*1000)/1000;
 			result.add(rounded);
 		}
