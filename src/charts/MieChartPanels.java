@@ -87,6 +87,7 @@ public class MieChartPanels {
 		JFreeChart chart = getXYChart("DQ Field", "DQ1", "DQ2", collection);
 		setLineRendererToThickLines(chart);
 		
+		
 		drawEqualSizes(chart.getXYPlot(), wl1, wl2, wl3);
 		
 		getSizeAnnotations(chart.getXYPlot(), wl1, wl2, wl3);
@@ -137,7 +138,9 @@ public class MieChartPanels {
 	}
 	
 	private static void drawEqualSizes(XYPlot plot, MieList wl1, MieList wl2, MieList wl3) {
-				
+		//Only render if more than one sigma exists in the MieLists
+		if (wl1.get(0).getSortedSigmas().size() == 1) //render lines only if more than one sigma is present)
+			return;
 		for (int i = wl1.size()/20; i < wl1.size()-wl1.size()/20; i += wl1.size() / 100) {
 			PointSpline spline = new PointSpline();
 			for (Double sigma: wl1.get(i).getSortedSigmas()) {
