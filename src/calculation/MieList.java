@@ -26,10 +26,10 @@ public class MieList implements Iterable<MieWrapper>{
 	}
 	
 	private void addMieElement(MieWrapper mieElement) {
-		if(mieElement.getDiameter()==Double.NaN) 
+		if(mieElement.getRadius()==Double.NaN) 
 			throw new IllegalArgumentException("mieElement must have a diameter");
 		array.add(mieElement);
-		list.put(mieElement.getDiameter(), mieElement);
+		list.put(mieElement.getRadius(), mieElement);
 	}
 	
 	public void addElement(MieWrapper element) {
@@ -129,11 +129,11 @@ public class MieList implements Iterable<MieWrapper>{
 	}
 	
 	public double getMinDiameter() {
-		return array.get(0).getDiameter();
+		return array.get(0).getRadius()*2;
 	}
 	
 	public double getMaxDiameter() {
-		return array.get(list.size()-1).getDiameter();
+		return array.get(list.size()-1).getRadius()*2;
 	}
 	
 	public String toString() {

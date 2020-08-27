@@ -39,7 +39,7 @@ public class DQWriter {
 			
 			MieWrapper mie1 = wl1.get(i);
 			MieWrapper mie2 = wl2.get(i);
-			sb.append(formatter.format(mie1.getDiameter())+"\t");
+			sb.append(formatter.format(mie1.getRadius()*2)+"\t"); //use diameter in file
 			//System.out.println("adding size"+mie1.getDiameter());
 			for(Double sigma: sortedSigmas) {
 				double integratedQext1 = mie1.getIntegratedQext().get(sigma);

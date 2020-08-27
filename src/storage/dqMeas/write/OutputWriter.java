@@ -104,8 +104,8 @@ public class OutputWriter {
 	
 	private String getInformation(MieList wl1, MieList wl2, MieList wl3) {
 		StringBuilder sb = new StringBuilder();
-		String start = String.format("%.4g", wl1.get(0).getDiameter());
-		String end = String.format("%.4g", wl1.get(wl1.size()-1).getDiameter());
+		String start = String.format("%.4g", wl1.get(0).getRadius()*2); //use diameter in file
+		String end = String.format("%.4g", wl1.get(wl1.size()-1).getRadius()*2); //radius is used in file
 		sb.append("Size from: "+start+" to "+end+"\r\n");
 		sb.append("Sigmas: ");
 		for (double sigma: wl1.get(0).getSortedSigmas()) {

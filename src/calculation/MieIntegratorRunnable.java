@@ -28,7 +28,7 @@ public class MieIntegratorRunnable implements Runnable{
 		for (MieWrapper element : mieList) {
 			// logNormal distribution for current particle radius.
 			//Calculate weighted integral for this element
-			dist = DistributionFactory.getDistribution(type, SD, Math.log(element.getDiameter()));
+			dist = DistributionFactory.getDistribution(type, SD, Math.log(element.getRadius()));
 
 			// integrate over all radiuses (total list)
 			double integral = 0;
@@ -42,7 +42,7 @@ public class MieIntegratorRunnable implements Runnable{
 
 				try { 
 					mie1 = mieList.get(i - 1);
-					x1 = mie1.getDiameter();
+					x1 = mie1.getRadius();
 					y1 = mie1.qext() * dist.density(x1, false) * Math.pow(x1, 2);
 				} catch (IndexOutOfBoundsException e) {
 					x1=0;
@@ -51,7 +51,7 @@ public class MieIntegratorRunnable implements Runnable{
 
 				mie2 = mieList.get(i);
 
-				x2 = mie2.getDiameter();
+				x2 = mie2.getRadius();
 				y2 = mie2.qext() * dist.density(x2, false) * Math.pow(x2, 2);
 				
 				integral += simpsonRule(x1, x2, y1, y2);
