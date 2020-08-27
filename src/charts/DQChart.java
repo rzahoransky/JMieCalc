@@ -76,7 +76,7 @@ public class DQChart extends ApplicationFrame {
 			XYSeries series = new XYSeries("Sigma: "+dev,false);
 			for(int i = 0;i<wl1.size();i++) {
 				//System.out.println("Qext "+dev+": "+wl1.get(i).getIntegratedQext().get(dev));
-				series.add(wl1.get(i).getDiameter(),wl1.get(i).getIntegratedQext().get(dev));	
+				series.add(wl1.get(i).getRadius()*2,wl1.get(i).getIntegratedQext().get(dev));	
 			}
 			collection.addSeries(series);
 		}
@@ -121,7 +121,7 @@ public class DQChart extends ApplicationFrame {
 			XYSeries series = new XYSeries("Qext");
 			for(int i = 0;i<wl1.size();i++) {
 				//System.out.println("Qext "+dev+": "+wl1.get(i).getIntegratedQext().get(dev));
-				series.add(wl1.get(i).getDiameter(), wl1.get(i).qext()*Math.pow(wl1.get(i).getDiameter(), 2));
+				series.add(wl1.get(i).getRadius()*2, wl1.get(i).qext()*Math.pow(wl1.get(i).getRadius()*2, 2));
 				//series.add(wl1.get(i).getRadius(), wl1.get(i).qext());
 			}
 			collection.addSeries(series);
@@ -130,7 +130,7 @@ public class DQChart extends ApplicationFrame {
 	
 	private void checkSort(MieList list1, MieList list2) {
 		for(int i = 0;i<list1.size();i++) {
-			if(list1.get(i).getDiameter()!=list2.get(i).getDiameter())
+			if(list1.get(i).getRadius()*2!=list2.get(i).getRadius()*2)
 				System.out.println("BAD SORTING: ");
 		}
 	}

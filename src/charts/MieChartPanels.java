@@ -37,7 +37,7 @@ public class MieChartPanels {
 		if(!integrated) {
 			XYSeries qextR = new XYSeries( "Qext x r² "+mie.get(0).getWavelength(), false);
 			for(int i = 0;i<mie.size();i++) {
-				qextR.add(mie.get(i).getDiameter(), mie.get(i).qext()*Math.pow(mie.get(i).getDiameter(), 2));
+				qextR.add(mie.get(i).getRadius()*2, mie.get(i).qext()*Math.pow(mie.get(i).getRadius(), 2));
 			}
 			collection.addSeries(qextR);
 		} else {
@@ -45,8 +45,8 @@ public class MieChartPanels {
 			for (Double dev:mie.get(0).getSortedSigmas()) {
 				XYSeries series = new XYSeries("Sigma: "+dev,false);
 				series.setDescription(null);
-				for(int i = 0;i<mie.size();i++) {
-					series.add(mie.get(i).getDiameter(),mie.get(i).getIntegratedQext().get(dev));	
+				for(int i = 0;i<mie.size();i++) { //display Diameter in charts
+					series.add(mie.get(i).getRadius()*2,mie.get(i).getIntegratedQext().get(dev));	
 				}
 				collection.addSeries(series);
 			}
@@ -101,8 +101,8 @@ public class MieChartPanels {
 	
 	private static void addInformationLegend(JFreeChart chart, MieList wl1, MieList wl2, MieList wl3) {
 		StringBuilder sb = new StringBuilder();
-		String start = String.format("%.4g", wl1.get(0).getDiameter());
-		String end = String.format("%.4g", wl1.get(wl1.size()-1).getDiameter());
+		String start = String.format("%.4g", wl1.get(0).getRadius()*2); //use diameter to represent particle size
+		String end = String.format("%.4g", wl1.get(wl1.size()-1).getRadius()*2);
 		sb.append("Size from: "+start+" to "+end+"\r\n");
 		sb.append("Sigmas: ");
 		for (double sigma: wl1.get(0).getSortedSigmas()) {
@@ -155,7 +155,7 @@ public class MieChartPanels {
 		LinkedList<XYAnnotation> annotations = new LinkedList<>();
 
 		for (int i = wl1.size()/20; i < wl1.size()-wl1.size()/20; i += wl1.size()/25) {
-			double size = wl1.get(i).getDiameter();
+			double size = wl1.get(i).getRadius()*2; //Display Radius
 			double middleLineValue=wl1.get(i).getSortedSigmas().get(wl1.get(i).getSortedSigmas().size()/2);
 			middleLineValue = wl1.get(0).getSortedSigmas().get(0);
 			double x = dqValue(wl1.get(i),wl2.get(i), middleLineValue);
@@ -210,7 +210,7 @@ public class MieChartPanels {
 		if(!integrated) {
 			XYSeries series = new XYSeries("DQ "+wl1d+"/"+wl2d,false);
 			for(int i = 0;i<wl1.size();i++) {
-				series.add(wl1.get(i).getDiameter(), wl1.get(i).qext() / wl2.get(i).qext());
+				series.add(wl1.get(i).getRadius()*2, wl1.get(i).qext() / wl2.get(i).qext());
 			}
 			collection.addSeries(series);
 		} else {
@@ -220,7 +220,7 @@ public class MieChartPanels {
 					//double qext1 = wl1.get(i).getIntegratedQext().get(dev);
 					//double qext2 = wl2.get(i).getIntegratedQext().get(dev);
 					//series.add(wl1.get(i).getDiameter(), qext1 / qext2);
-					series.add(wl1.get(i).getDiameter(), dqValue(wl1.get(i), wl2.get(i), dev));
+					series.add(wl1.get(i).getRadius()*2, dqValue(wl1.get(i), wl2.get(i), dev));
 				}
 				collection.addSeries(series);
 			}
