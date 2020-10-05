@@ -43,7 +43,7 @@ public class MieIntegratorRunnable implements Runnable{
 				try { 
 					mie1 = mieList.get(i - 1);
 					x1 = mie1.getRadius();
-					y1 = mie1.qext() * dist.density(x1, false) * Math.pow(x1, 2);
+					y1 = mie1.qext() * dist.density(x1, false) * Math.pow(x1, 2); //integrate r²*Qext
 				} catch (IndexOutOfBoundsException e) {
 					x1=0;
 					y1=mieList.get(i).qext() * dist.density(x1, false) * Math.pow(x1, 2); //get some reasonable value at boundaries

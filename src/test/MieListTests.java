@@ -56,9 +56,9 @@ class MieListTests {
 		MieList list = new MieList(2);
 		list.addElement(mie1wl1);
 		list.addElement(mie3wl1);
-		assertEquals(mie1wl1, list.getClosesElementForDiameter(diameter+0.04));
+		assertEquals(mie1wl1, list.getClosestElementForDiameter(diameter+0.04));
 		assertEquals(mie1wl1, list.getElementForDiameter(diameter));
-		assertEquals(mie3wl1, list.getClosesElementForDiameter(diameter2));	
+		assertEquals(mie3wl1, list.getClosestElementForDiameter(diameter2));	
 	}
 	
 	@Test

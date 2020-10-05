@@ -14,7 +14,7 @@ import errors.IllegalMieListException;
  */
 public class MieList implements Iterable<MieWrapper>{
 
-	private TreeMap<Double,MieWrapper> list = new TreeMap<>(); //Radius, MieElement
+	private TreeMap<Double,MieWrapper> radiusLookupList = new TreeMap<>(); //Radius, MieElement
 	private int currentIndex=0;
 	private ArrayList<MieWrapper> array = new ArrayList<>(100);
 	
@@ -29,7 +29,7 @@ public class MieList implements Iterable<MieWrapper>{
 		if(mieElement.getRadius()==Double.NaN) 
 			throw new IllegalArgumentException("mieElement must have a diameter");
 		array.add(mieElement);
-		list.put(mieElement.getRadius(), mieElement);
+		radiusLookupList.put(mieElement.getRadius(), mieElement);
 	}
 	
 	public void addElement(MieWrapper element) {
@@ -45,7 +45,7 @@ public class MieList implements Iterable<MieWrapper>{
 	public void checkConsistency() throws IllegalMieListException {
 		MieWrapper firstElement = array.get(0);
 
-		for (MieWrapper check : list.values()) {
+		for (MieWrapper check : radiusLookupList.values()) {
 			if (!sameParameteres(firstElement, check))
 				throw new IllegalMieListException("Parameters in list do not match! " + firstElement + " VS " + check);
 		}
@@ -85,7 +85,7 @@ public class MieList implements Iterable<MieWrapper>{
 	}
 	
 	public int size() {
-		return list.size();
+		return radiusLookupList.size();
 	}
 	
 	/**
@@ -94,11 +94,11 @@ public class MieList implements Iterable<MieWrapper>{
 	 * @return {@link MieWrapper} element that matches the given diameter. <code>null</code> if none is found
 	 */
 	public MieWrapper getElementForDiameter(double diameter) {
-		if (!list.containsKey(diameter/2)) {
+		if (!radiusLookupList.containsKey(diameter/2)) {
 			System.out.println("Missed a MieParticle Entry!");
 			return null;
 		}
-		return list.get(diameter/2);
+		return radiusLookupList.get(diameter/2);
 	}
 	
 	/**
@@ -106,8 +106,8 @@ public class MieList implements Iterable<MieWrapper>{
 	 * @param diameter the diameter in um to search for in the list
 	 * @return {@link MieWrapper} element with closes matching diameter
 	 */
-	public MieWrapper getClosesElementForDiameter(double diameter) {
-		return list.get(getClosesMatchingKey(diameter));
+	public MieWrapper getClosestElementForDiameter(double diameter) {
+		return radiusLookupList.get(getClosesMatchingKey(diameter/2));
 	}
 	
 	/** get the wavelength of this list **/
@@ -135,23 +135,23 @@ public class MieList implements Iterable<MieWrapper>{
 	}
 	
 	public double getMaxDiameter() {
-		return array.get(list.size()-1).getRadius()*2;
+		return array.get(radiusLookupList.size()-1).getRadius()*2;
 	}
 	
 	public String toString() {
 		return getWavelength()+"µm ("+getRefMedium()+" / "+getRefSphereReal()+"-"+getRefSphereImag()+"i)";
 	}
 	
-	/** get the key in the list that matches most closely to diameter **/
-	protected double getClosesMatchingKey(double diameter) {
-		if (diameter>=list.lastKey())
-			return list.lastKey();
-		if (diameter<=list.firstKey())
-			return list.firstKey();
-		if (Math.abs(list.ceilingKey(diameter)-diameter)<Math.abs(list.floorKey(diameter)-diameter)) {
-			return list.ceilingKey(diameter);
+	/** get the key in the list that matches most closely to provided key **/
+	protected double getClosesMatchingKey(double keyToSearch) {
+		if (keyToSearch>=radiusLookupList.lastKey())
+			return radiusLookupList.lastKey();
+		if (keyToSearch<=radiusLookupList.firstKey())
+			return radiusLookupList.firstKey();
+		if (Math.abs(radiusLookupList.ceilingKey(keyToSearch)-keyToSearch)<Math.abs(radiusLookupList.floorKey(keyToSearch)-keyToSearch)) {
+			return radiusLookupList.ceilingKey(keyToSearch);
 		} else {
-			return list.floorKey(diameter);
+			return radiusLookupList.floorKey(keyToSearch);
 		}
 	}
 
