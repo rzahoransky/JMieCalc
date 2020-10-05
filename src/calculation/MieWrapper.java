@@ -98,9 +98,9 @@ public class MieWrapper extends Mie implements Comparable<MieWrapper> {
 	}
 	
 	public String toString() {
-		return "Diameter: "+getDiameter()+" Medium "+ getRefractiveIndexMedium()+
-				" Sphere: "+getRefractiveIndexSphereReal()+"+"+getRefractiveIndexSpereImaginary()+"i"+
-				"Wavelength: "+getWavelength();
+		return "Radius/Diameter: "+getRadius()+"/"+getDiameter()+"um. Medium "+ getRefractiveIndexMedium()+
+				". Sphere: "+getRefractiveIndexSphereReal()+"+"+getRefractiveIndexSpereImaginary()+"i"+
+				". Wavelength: "+getWavelength();
 	}
 	
 	/**

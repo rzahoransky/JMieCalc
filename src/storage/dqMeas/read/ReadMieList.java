@@ -29,16 +29,16 @@ public class ReadMieList {
 		Scanner scan = new Scanner(diameterVsQextFile);
 		scan.useLocale(Locale.US);
 		while (scan.hasNextLine()) {
-			if (scan.hasNext("Wavelength:")) { //get wavelength in header
+			if (scan.hasNext("Wavelength:")) { //get wavelength from header
 				scan.next();
 				wavelength = scan.nextDouble();
 				wl=Wavelengths.getWlFor(wavelength);
 			}
 			if (scan.hasNextDouble()) {
-				double diameter = scan.nextDouble();
+				double diameter = scan.nextDouble(); //read diameter from Mie File: Mie-File contains diameter, not radius in first column
 				double qext = scan.nextDouble();
 				MieWrapper mieElement = new MieWrapper();
-				mieElement.setRadiusWavelength(diameter / 2, wavelength);
+				mieElement.setRadiusWavelength(diameter / 2, wavelength); //create MieObject with radius
 				mieElement.setHostRefractiveIndex(refIndices.getRefractiveIndexMedium(wl.getValue()));
 				mieElement.setRefractiveIndex(refIndices.getRefractiveIndexSphereReal(wl.getValue()), refIndices.getRefractiveIndexSphereImaginaray(wl.getValue()));
 				list.addElement(mieElement);

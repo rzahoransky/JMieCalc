@@ -14,7 +14,7 @@ import errors.IllegalMieListException;
  */
 public class MieList implements Iterable<MieWrapper>{
 
-	private TreeMap<Double,MieWrapper> list = new TreeMap<>();
+	private TreeMap<Double,MieWrapper> list = new TreeMap<>(); //Radius, MieElement
 	private int currentIndex=0;
 	private ArrayList<MieWrapper> array = new ArrayList<>(100);
 	
@@ -94,9 +94,11 @@ public class MieList implements Iterable<MieWrapper>{
 	 * @return {@link MieWrapper} element that matches the given diameter. <code>null</code> if none is found
 	 */
 	public MieWrapper getElementForDiameter(double diameter) {
-		if (!list.containsKey(diameter))
+		if (!list.containsKey(diameter/2)) {
+			System.out.println("Missed a MieParticle Entry!");
 			return null;
-		return list.get(diameter);
+		}
+		return list.get(diameter/2);
 	}
 	
 	/**
