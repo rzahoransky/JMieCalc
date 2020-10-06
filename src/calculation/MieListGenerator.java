@@ -9,12 +9,12 @@ import presets.Wavelengths;
 public class MieListGenerator {
 
 	private Wavelengths wavelength;
-	private IDiameterParametersInterface sizeParameters;
+	private IDiameterParametersInterface diameterParameters;
 	private IMieParticlePreset particlePresets;
 	
 	public MieListGenerator(IMieParticlePreset particlePreset, IDiameterParametersInterface sizeParameters) {
 		this.particlePresets = particlePreset;
-		this.sizeParameters = sizeParameters;
+		this.diameterParameters = sizeParameters;
 	}
 	
 	public MieListGenerator() {
@@ -22,8 +22,8 @@ public class MieListGenerator {
 	}
 	
 
-	public IDiameterParametersInterface getSizeParameters() {
-		return sizeParameters;
+	public IDiameterParametersInterface getDiameterParameters() {
+		return diameterParameters;
 	}
 
 	public Object getParticlePresets() {
@@ -39,9 +39,9 @@ public class MieListGenerator {
 	}
 	
 	public MieList generateList(Wavelengths wl) throws WavelengthMismatchException{
-		MieList list = new MieList(sizeParameters.getSteps());
+		MieList list = new MieList(diameterParameters.getSteps()); //initiate MieList with given size
 		this.wavelength=wl;
-		for(double curDiameter: sizeParameters.sizes()) {
+		for(double curDiameter: diameterParameters.diameters()) {
 			//System.out.println("Generating "+curRadius);
 			MieWrapper element = new MieWrapper();
 			element.setHostRefractiveIndex(particlePresets.getRefractiveIndexMedium(wl.getValue()));

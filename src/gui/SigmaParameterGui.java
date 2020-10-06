@@ -21,10 +21,13 @@ import presets.ISigmaPreset;
 import presets.RunningSigma;
 
 public class SigmaParameterGui extends JPanel implements CalculationAssignmentListener{
+	private static final long serialVersionUID = 1L;
 	
 	GridBagConstraints c = new GridBagConstraints();
-	JSpinner start = new JSpinner(new SpinnerNumberModel(0.005, 0.001, 1, 0.1));
-	JSpinner end = new JSpinner(new SpinnerNumberModel(0.2, 0.01, 10, 0.1));
+	//sigma lower than 0.001 lead to wrong calculations 
+	//(distribution gets too narrow and too step to calculate in double
+	JSpinner start = new JSpinner(new SpinnerNumberModel(0.005, 0.003, 10, 0.1)); 
+	JSpinner end = new JSpinner(new SpinnerNumberModel(0.2, 0.003, 10, 0.1));
 	JSpinner steps = new JSpinner(new SpinnerNumberModel(3, 1, 30, 1));
 	JCheckBox logarithmic = new JCheckBox(null,null,true);
 	JTextField specificSigmas = new JTextField();

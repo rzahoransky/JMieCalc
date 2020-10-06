@@ -21,7 +21,7 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 		this.startDiameter=start;
 		this.endDiameter=end;
 		this.steps=steps;
-		sizes();
+		diameters();
 	}
 	
 	public String getName() {
@@ -55,7 +55,7 @@ public abstract class AbstractDiameterSizeParameters implements IDiameterParamet
 	
 
 	@Override
-	public List<Double> sizes() {
+	public List<Double> diameters() {
 		if (sizes == null || sizes.isEmpty()) {
 			sizes = new LinkedList<>();
 			if (!isLogarithmic()) {

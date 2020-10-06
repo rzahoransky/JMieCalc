@@ -28,8 +28,8 @@ public class SizeDistributionTest {
 	void setup() {
 		logPreset = PresetFactory.getSizePreset(min, max, steps, true);
 		normalPreset = PresetFactory.getSizePreset(min, max, steps, false);
-		logList = logPreset.sizes();
-		normalList = normalPreset.sizes();
+		logList = logPreset.diameters();
+		normalList = normalPreset.diameters();
 	}
 	
 	@Test
