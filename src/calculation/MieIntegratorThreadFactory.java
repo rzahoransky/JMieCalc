@@ -16,6 +16,11 @@ public class MieIntegratorThreadFactory{
 		System.out.println(test.density(1.5, false));
 	}
 
+	/**
+	 * Create a calculation thread for wach given sigma from distribution
+	 * @param list
+	 * @param distribution
+	 */
 	public MieIntegratorThreadFactory(MieList list, ISigmaPreset distribution) {
 		//System.out.println("Adding Distributions");
 		for(double sd:distribution.getSDs()) {

@@ -64,6 +64,7 @@ public class OldMieCalculator {
 
 		wl1List.checkConsistency();
 
+		//calculate Qext (monodisperse)
 		MieListCalculator calc1 = new MieListCalculator(wl1List);
 		MieListCalculator calc2 = new MieListCalculator(wl2List);
 		MieListCalculator calc3 = new MieListCalculator(wl3List);
@@ -76,7 +77,7 @@ public class OldMieCalculator {
 		wl2Thread.join();
 		wl3Thread.join();
 
-		System.out.println("All threads finished for Qext Values");
+		System.out.println("Qext values calculated");
 
 		// Do the integration
 
@@ -106,6 +107,8 @@ public class OldMieCalculator {
 		result.put(Wavelengths.WL1, wl1List);
 		result.put(Wavelengths.WL2, wl2List);
 		result.put(Wavelengths.WL3, wl3List);
+		
+		System.out.println("Integration finished");
 
 		return result;
 	}

@@ -19,7 +19,7 @@ public class MieListCalculator implements Runnable{
 	public Thread calculate() {
 		Thread thread = new Thread(this);
 		thread.start();
-		System.out.println("Thread for WL: "+list.get(0).getWavelength()+" started.");
+		//System.out.println("Thread for WL: "+list.get(0).getWavelength()+" started.");
 		return thread;
 	}
 

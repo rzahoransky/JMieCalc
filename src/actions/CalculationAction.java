@@ -29,9 +29,11 @@ public class CalculationAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		JButton source = (JButton) arg0.getSource();
-
-		source.setEnabled(false);
+		try {
+			JButton source = (JButton) arg0.getSource();
+			source.setEnabled(false);
+		} catch (Exception e) {
+		}
 		
 		//start as Thread to keep GUI responding
 		new Thread(new Runnable() {
@@ -55,7 +57,8 @@ public class CalculationAction extends AbstractAction {
 					JOptionPane.showMessageDialog((Component) arg0.getSource(), "Could not calculate: " + e.getMessage());
 				} finally {
 					// reenable button
-					source.setEnabled(true);
+					((JButton) arg0.getSource()).setEnabled(true);
+					//source.setEnabled(true);
 				}
 				
 			}

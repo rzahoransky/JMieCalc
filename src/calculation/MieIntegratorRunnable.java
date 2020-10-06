@@ -5,7 +5,7 @@ import presets.DistributionType;
 
 /**
  * Calculation of qext mie theory transmission for a non uniform particle diameter distribution.
- * Integrates a single mieList for a given distribution
+ * Integrates a single mieList for a given distribution and sigma
  * @author richard
  *
  */
@@ -25,7 +25,7 @@ public class MieIntegratorRunnable implements Runnable{
 	@Override
 	public void run() {
 		GenericDistribution dist;
-		for (MieWrapper element : mieList) {
+		for (MieWrapper element : mieList) { //for every Mie-Element
 			// logNormal distribution for current particle radius.
 			//Calculate weighted integral for this element
 			dist = DistributionFactory.getDistribution(type, SD, Math.log(element.getRadius()));
@@ -34,7 +34,7 @@ public class MieIntegratorRunnable implements Runnable{
 			double integral = 0;
 			MieWrapper mie1;
 			MieWrapper mie2;
-			for (int i = 0; i < mieList.size(); i++) {
+			for (int i = 0; i < mieList.size(); i++) { //go over each other element
 				double x1;
 				double x2;
 				double y1;
@@ -63,7 +63,8 @@ public class MieIntegratorRunnable implements Runnable{
 
 			}
 			 // System.out.println("Integral: "+integral);
-			element.getIntegratedQext().put(SD, integral);
+			//store result for this element into the elements integral map
+			element.getIntegratedQext().put(SD, integral); 
 		}
 
 	}
