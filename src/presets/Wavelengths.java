@@ -70,6 +70,10 @@ public enum Wavelengths {
 	public String toString() {
 		return super.toString() + "(" + getValue() + ")";
 	}
+	
+	public String toShortString() {
+		return super.toString();
+	}
 
 	public static void store() {
 		File f = new File("wavelengths");
