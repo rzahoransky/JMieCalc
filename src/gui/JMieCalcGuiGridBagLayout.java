@@ -91,7 +91,7 @@ public class JMieCalcGuiGridBagLayout extends JFrame{
 		JButton abtbtn = new JButton("about...");
 		JFrame about = new JFrame("About");
 		about.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JLabel text = new JLabel("<html>JMieCalc 2020-10<b> by Richard Markus Zahoransky <br> r.zahoransky@gmx.de </b> for the calculation of extinction coefficients for Wizard DQ "
+		JLabel text = new JLabel("<html>JMieCalc 2020-12<b> by Richard Markus Zahoransky <br> r.zahoransky@gmx.de </b> for the calculation of extinction coefficients for Wizard DQ "
 				+ "<br><br> this software contains the apache commons libraries and the JFreeChart library"
 				+ "<br> Thanks to Bernhard Michel for his link to mie scattering in Java (http://www.lightscattering.de/MieCalc/)</html>");
 		about.setSize(300, 200);
