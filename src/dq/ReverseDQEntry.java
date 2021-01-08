@@ -2,6 +2,7 @@ package dq;
 
 import calculation.MieWrapper;
 
+/**contains a mapping between particle size and DQ**/
 public class ReverseDQEntry implements Comparable<ReverseDQEntry>{
 
 	private double sigma;
@@ -26,8 +27,14 @@ public class ReverseDQEntry implements Comparable<ReverseDQEntry>{
 		return dq;
 	}
 
+	/**returns the diameter**/
 	public double getDiameter() { //DQ Entry contains diameter as this is what we want to read as particle size
 		return diameter;
+	}
+	
+	/**returns the radius**/
+	public double getRadius() {
+		return diameter / 2.0;
 	}
 
 	@Override

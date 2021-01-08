@@ -16,7 +16,7 @@ public class MieWrapper extends Mie implements Comparable<MieWrapper> {
 	private double refractiveIndexSpereImaginary;
 	private ConcurrentHashMap<Double, Double> integratedQext = new ConcurrentHashMap<>(); //SD, integrated Value
 
-	/** get integrated values for <deviation, value>**/
+	/** get integrated values for &ltdeviation(sigma), value&gt**/
 	public ConcurrentHashMap<Double, Double> getIntegratedQext() {
 		return integratedQext;
 	}

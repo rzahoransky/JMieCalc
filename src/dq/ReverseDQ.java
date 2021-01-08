@@ -41,19 +41,20 @@ public class ReverseDQ {
 			return cache.get(dq);
 		}
 			
-		ArrayList<ReverseDQEntry> list = new ArrayList<>(20);
+		ArrayList<ReverseDQEntry> dqHits = new ArrayList<>(20);
 		for (double sigma: dqs.keySet()) {
-			ArrayList<ReverseDQEntry> currentElement = dqs.get(sigma);
-			for (int i = 1; i<currentElement.size(); i++) { //one dq may point to different particle diameters. Stopping at the first match does not work
-				if (checkMatch(currentElement, i, dq)) {
-					list.add(closestElement(currentElement.get(i-1), currentElement.get(i), dq));
+			ArrayList<ReverseDQEntry> reverseDQForCurrentSigma = dqs.get(sigma);
+			for (int i = 1; i<reverseDQForCurrentSigma.size(); i++) { //one dq may point to different particle diameters. Stopping at the first match does not work
+				if (checkMatch(reverseDQForCurrentSigma, i, dq)) { //this is required since there may be more than one particle size per single dq. A TreeMap lookup may yield wrong results in this case
+					dqHits.add(closestElement(reverseDQForCurrentSigma.get(i-1), reverseDQForCurrentSigma.get(i), dq));
 				}
 			}
 		}
-		cache.put(dq, list);
-		return list;
+		cache.put(dq, dqHits);
+		return dqHits;
 	}
 
+	/**test if the given dq and index match**/
 	private boolean checkMatch(ArrayList<ReverseDQEntry> elem, int i, double dq) {
 		if (elem.get(i-1).getDq()<=dq && elem.get(i).getDq()>=dq)
 			return true;
@@ -62,6 +63,7 @@ public class ReverseDQ {
 		return false;
 	}
 
+	/** return which of the two reverseDqEntrys is closer to the actual measured dq **/
 	private ReverseDQEntry closestElement(ReverseDQEntry reverseDQEntry1, ReverseDQEntry reverseDQEntry2, double dq) {
 		double distance1 = Math.abs(dq-reverseDQEntry1.getDq());
 		double distance2 = Math.abs(dq-reverseDQEntry2.getDq());
